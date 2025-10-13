@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Loader from '../components/Loader.astro';
+const TITLE = 'Ana & Carlos — Invitación';
+---
+<BaseLayout title={TITLE}>
+  <Loader
+    id="loader"
+    label="Estamos cargando tu invitación…"
+    ctaText="Leer con atención el dress code y las restricciones"
+    ctaHref="#reglas"          
+    heart1="#ffffff"
+    heart2="#ffffff"
+    textColor="#3a4a7a"
+    btnFill="rgba(255, 224, 203, 0.55)"
+    height="100vh"
+  />
+
+  <!-- <InviteContent
+    id="invite-content"
+    weddingDateISO="2026-02-14"
+    weddingDateText="14 de febrero de 2026"
+    timeText="4:00 p. m."
+    venueText="Hacienda El Encanto"
+    showAdultsOnly
+    showSeatNote
+  /> -->
+
+  <!-- <script type="module" src={Astro.resolve('../scripts/invite.ts')} /> -->
+</BaseLayout>

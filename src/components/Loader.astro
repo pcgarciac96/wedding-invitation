@@ -1,0 +1,163 @@
+---
+interface Props {
+  id?: string;
+  label?: string;
+  ctaText?: string;
+  ctaHref?: string;
+
+  /** Colores (relleno corazón) */
+  heart1?: string;
+  heart2?: string;
+
+  /** Colores (contornos corazón) */
+  stroke1?: string;
+  stroke2?: string;
+
+  /** Texto y botón */
+  textColor?: string;
+  btnFill?: string;
+
+  /** Alto del loader */
+  height?: string;
+}
+
+const {
+  id = 'loader',
+  label = 'Estamos cargando tu invitación...',
+  ctaText = 'Leer con atención el dress code y las restricciones',
+  ctaHref = '#',
+
+  heart1 = '#ffffff',
+  heart2 = '#ffffff',
+
+  // NUEVA PALETA (contornos)
+  stroke1 = '#4A7D79',
+  stroke2 = '#FDF4D4',
+
+  // Puedes ajustar si quieres
+  textColor = '#3a4a7a',
+  btnFill = 'rgba(255, 224, 203, 0.55)',
+
+  height = '100vh',
+} = Astro.props;
+---
+
+<section id={id} aria-busy="true" aria-live="polite">
+  <div
+    class="stage"
+    style={`--text:${textColor}; --btn-fill:${btnFill}; --h:${height}; --stroke1:${stroke1}; --stroke2:${stroke2};`}
+  >
+    <!-- Capa blur (metaballs) -->
+    <div class="metaballs" aria-hidden="true">
+      <div class="heart heart-1" style={`--c:${heart1}`}></div>
+      <div class="heart heart-2" style={`--c:${heart2}`}></div>
+    </div>
+
+    <!-- UI -->
+    <div class="ui">
+      <h1 class="title">{label}</h1>
+      {ctaText && ctaHref && (
+        <a class="cta" href={ctaHref}>{ctaText}</a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stage{
+    position:relative;
+    width:100vw;
+    height:var(--h);
+    overflow:hidden;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    /* NUEVA PALETA DE FONDO */
+    background: linear-gradient(180deg,
+      #4A7D79 0%,
+      #9ACDAA 36%,
+      #E59354 60%,
+      #FDF4D4 100%
+    );
+  }
+
+  /* Metaballs (difuminados) */
+  .metaballs{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    filter: blur(10px) contrast(20);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* Corazones (relleno) */
+  .heart{
+    --c:#fff;
+    width:70px; height:70px;
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+    background:var(--c);
+    border-radius:8px;
+  }
+  .heart::before,
+  .heart::after{
+    content:"";
+    position:absolute;
+    width:70px; height:70px;
+    background:var(--c);
+    border-radius:50%;
+  }
+  .heart::before{ top:-35px; left:0; }
+  .heart::after{  top:0;   left:35px; }
+
+  /* Animaciones */
+  .heart-1{ left:20%; animation:osc-l 2.5s ease-in-out infinite; }
+  .heart-2{ left:80%; animation:osc-r 2.5s ease-in-out infinite; }
+  @keyframes osc-l{ 0%{left:20%;} 50%{left:50%;} 100%{left:20%;} }
+  @keyframes osc-r{ 0%{left:80%;} 50%{left:50%;} 100%{left:80%;} }
+
+  /* Contornos nítidos */
+  .edges{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+  }
+  .heart-stroke{
+    position:absolute;
+    width:84px; height:84px;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    fill:none;
+    stroke-linecap:round; stroke-linejoin:round;
+    stroke-width:3.5;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.25));
+  }
+  .heart-stroke.heart-1{ stroke: var(--stroke1); }
+  .heart-stroke.heart-2{ stroke: var(--stroke2); }
+
+  /* UI */
+  .ui{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    bottom:5%; 
+    z-index:2; text-align:center; padding:0 24px;
+  }
+  .title{
+    color:var(--text);
+    font-weight:700;
+    font-size: clamp(20px, 4vw, 28px);
+    margin:0;
+  }
+  .cta{
+    position:absolute; left:50%; bottom:28px;
+    transform:translateX(-50%);
+    width:calc(100% - 64px); max-width:380px;
+    padding:14px 18px; border-radius:16px;
+    border:2px solid var(--text);
+    background:var(--btn-fill);
+    color:var(--text);
+    font-weight:600; line-height:1.2; text-align:center;
+    backdrop-filter:saturate(120%) blur(2px);
+    cursor:pointer; text-decoration:none;
+  }
+  .cta:hover{ filter:brightness(1.05); }
+  .cta:active{ transform:translateX(-50%) scale(0.99); }
+</style>
