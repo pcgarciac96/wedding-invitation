@@ -1,0 +1,80 @@
+---
+// import Countdown from './Countdown.astro';
+
+interface Props {
+  id?: string;
+  weddingDateISO: string;     // "YYYY-MM-DD"
+  weddingDateText: string;    // "14 de febrero de 2026"
+  timeText?: string;          // "4:00 p. m."
+  venueText?: string;         // "Hacienda El Encanto"
+  showAdultsOnly?: boolean;   // true/false
+  showSeatNote?: boolean;     // true/false
+}
+
+const {
+  id = 'invite-content',
+  weddingDateISO,
+  weddingDateText,
+  timeText = '4:00 p. m.',
+  venueText = 'Hacienda El Encanto',
+  showAdultsOnly = true,
+  showSeatNote = true,
+} = Astro.props;
+---
+<section id={id} class="hidden opacity-0 transition-opacity duration-300">
+  <section class="mx-auto w-full max-w-4xl">
+    <div class="rounded-2xl border border-white/10 bg-white/10 p-6 md:p-8 shadow-2xl backdrop-blur">
+      <header class="text-center">
+        <span class="inline-block rounded-full bg-white/10 px-3 py-1 text-xs uppercase tracking-widest text-slate-300">
+          ¡Nos casamos!
+        </span>
+        <h1 class="font-serif text-4xl md:text-6xl mt-3">Ana &amp; Carlos</h1>
+        <p class="text-slate-300 mt-2">Con mucha alegría te invitamos a celebrar nuestra boda.</p>
+      </header>
+
+      <div class="my-6 h-px w-40 mx-auto bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+
+      <div class="grid gap-4 text-center md:grid-cols-3">
+        <div>
+          <small class="block text-slate-300 font-semibold">Cuándo</small>
+          <strong class="text-base">
+            <time datetime={weddingDateISO}>{weddingDateText}</time>
+          </strong>
+        </div>
+        <div>
+          <small class="block text-slate-300 font-semibold">Hora</small>
+          <strong class="text-base">{timeText}</strong>
+        </div>
+        <div>
+          <small class="block text-slate-300 font-semibold">Dónddddde</small>
+          <!-- <strong class="text-base">{venueText}</strong> -->
+        </div>
+      </div>
+
+      <!-- <Countdown dateISO={weddingDateISO} /> -->
+
+      <!-- Bloque dinámico (rellenado por invite.ts) -->
+      <section class="text-center mt-4">
+        <p class="text-lg"><strong id="guest-names">Cargando nombres…</strong></p>
+        <p class="text-slate-300">Invitación válida para <strong id="guest-seats">—</strong> persona(s).</p>
+        <p id="guest-error" class="mx-auto mt-3 max-w-xl rounded-xl border border-rose-300/40 bg-rose-900/30 px-4 py-2 text-rose-100 hidden">
+          No pudimos encontrar tu invitación. Verifica el enlace 💌
+        </p>
+
+        {(showAdultsOnly || showSeatNote) && (
+          <div class="mt-4 text-sm text-slate-300 space-y-1">
+            {showAdultsOnly && <p>Recepción <strong>solo para adultos</strong>.</p>}
+            {showSeatNote && <p>La invitación aplica únicamente para las personas indicadas en este enlace.</p>}
+          </div>
+        )}
+      </section>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 font-semibold hover:bg-white/15 transition"
+           href="https://maps.google.com/?q=Hacienda%20El%20Encanto" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+
+      <footer class="mt-8 text-center text-sm text-slate-400">Dress code: Elegante</footer>
+    </div>
+  </section>
+</section>

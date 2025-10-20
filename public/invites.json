@@ -1,0 +1,4 @@
+[
+  { "id": "x7q3p9", "names": ["Pablo García", "Valentina Ruiz"], "seats": 2, "email": "pablo@example.com", "group_id": "G-001" },
+  { "id": "m2k8f1", "names": ["María López"], "seats": 1, "email": "maria@example.com", "group_id": "G-002" }
+]
