@@ -1,0 +1,137 @@
+---
+interface Props {
+  /** "YYYY-MM-DD" o "YYYY-MM-DDTHH:mm:ss±HH:MM" */
+  dateISO: string;
+  id?: string;
+  title?: string;   // por defecto: "Faltan"
+  class?: string;   // clases extra
+
+  // Colores (estética crema/sepia)
+  bg?: string;
+  text?: string;
+  accent?: string;
+}
+
+const props = Astro.props as Props;
+const {
+  dateISO,
+  id = 'countdown',
+  title = 'Faltan',
+  class: extra = '',
+  bg = '#FBF4E8',
+  text = '#8b6b5e',
+  accent = '#d8c5a8',
+} = props;
+---
+
+<section
+  id={id}
+  data-countdown-root
+  data-date={dateISO}
+  class={`mx-auto w-full max-w-[680px] px-4 py-8 ${extra}`}
+  style={`--bg:${bg}; --text:${text}; --accent:${accent};`}
+>
+  <div class="rounded-2xl border border-[color:var(--accent)]/50 bg-[color:var(--bg)]/95 p-6 md:p-10 text-center shadow-lg">
+    <h2 class="font-serif text-3xl md:text-5xl tracking-wide text-[color:var(--text)] mb-4 md:mb-6">
+      <span id={`${id}-title`}>{title}</span>
+    </h2>
+
+    <div class="grid grid-cols-4 items-stretch text-[color:var(--text)]" aria-live="polite" aria-atomic="true">
+      <div class="px-1 md:px-3">
+        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="days">00</div>
+        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Días</div>
+      </div>
+
+      <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
+        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="hours">00</div>
+        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Horas</div>
+      </div>
+
+      <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
+        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="mins">00</div>
+        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Min</div>
+      </div>
+
+      <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
+        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="secs">00</div>
+        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Seg</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+  </style>
+
+  <script>
+    // Utilidades
+    function parseTarget(s:any) {
+      // "YYYY-MM-DD" → medianoche local
+      if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+        const [y, m, d] = s.split('-').map(Number);
+        return new Date(y, m - 1, d, 0, 0, 0, 0);
+      }
+      return new Date(s);
+    }
+    const pad = (n:any) => String(n).padStart(2, '0');
+
+    function setup(root:any) {
+      if (!root || root.dataset.ccMounted === '1') return;
+      root.dataset.ccMounted = '1';
+
+      const targetStr = root.getAttribute('data-date') || '';
+      const target:any = parseTarget(targetStr);
+
+      const titleEl = root.querySelector('#' + CSS.escape(root.id) + '-title');
+      const daysEl  = root.querySelector('[data-cc="days"]');
+      const hoursEl = root.querySelector('[data-cc="hours"]');
+      const minsEl  = root.querySelector('[data-cc="mins"]');
+      const secsEl  = root.querySelector('[data-cc="secs"]');
+
+      function tick() {
+        const now:any = new Date();
+        const diff = target - now;
+
+        if (isNaN(target.getTime())) {
+          if (titleEl) titleEl.textContent = 'Fecha inválida';
+          return true;
+        }
+
+        if (diff <= 0) {
+          daysEl.textContent  = '00';
+          hoursEl.textContent = '00';
+          minsEl.textContent  = '00';
+          secsEl.textContent  = '00';
+          if (titleEl) titleEl.textContent = '¡Hoy es el gran día!';
+          return true;
+        }
+
+        const sec = Math.floor(diff / 1000);
+        const d = Math.floor(sec / 86400);
+        const h = Math.floor((sec % 86400) / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+
+        daysEl.textContent  = pad(d);
+        hoursEl.textContent = pad(h);
+        minsEl.textContent  = pad(m);
+        secsEl.textContent  = pad(s);
+        return false;
+      }
+
+      tick();
+      const int = setInterval(() => { if (tick()) clearInterval(int); }, 1000);
+
+      // Limpieza al cambiar de ruta con la SPA de Astro
+      document.addEventListener('astro:before-swap', () => clearInterval(int), { once: true });
+    }
+
+    // Inicializa todas las instancias (por si hay varias en la página)
+    document.querySelectorAll('[data-countdown-root]').forEach(setup);
+
+    // Re-inicializa si Astro hace navegación parcial
+    document.addEventListener('astro:page-load', () => {
+      document.querySelectorAll('[data-countdown-root]').forEach(setup);
+    });
+  </script>
+</section>

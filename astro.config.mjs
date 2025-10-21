@@ -6,6 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    server: {
+      host: true,
+      allowedHosts: ['.ngrok-free.app'],
+    },
     plugins: [tailwindcss()]
   }
 });

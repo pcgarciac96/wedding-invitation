@@ -1,34 +1,61 @@
 type Invite = { id: string; names: string[] | string; seats: number };
 
 const MIN_LOADER_MS = 2000;
-function delay(ms:number){ return new Promise(r=>setTimeout(r,ms)); }
+function delay(ms: number) { return new Promise(r => setTimeout(r, ms)); }
+
+function $(id: string) {
+  return document.getElementById(id) as HTMLElement | null;
+}
+
+function renderGuests(names: string[], seats: number) {
+  const seatsCircle = $('guest-seats-circle');
+  const namesList   = $('guest-names-list');
+
+  // Compatibilidad con IDs antiguos (si existen en el DOM)
+  const legacyNames = $('guest-names');
+  const legacySeats = $('guest-seats');
+
+  if (seatsCircle) seatsCircle.textContent = String(seats ?? 1);
+  if (legacySeats) legacySeats.textContent = String(seats ?? 1);
+
+  if (namesList) {
+    namesList.innerHTML = '';
+    names.forEach((n) => {
+      const li = document.createElement('li');
+      li.className = 'mx-auto w-[18rem] md:w-[22rem] rounded-xl bg-[var(--tag-bg)] text-[var(--tag-fg)] px-6 py-2 font-serif italic text-xl';
+      li.textContent = n;
+      namesList.appendChild(li);
+    });
+  }
+
+  if (legacyNames) {
+    legacyNames.textContent = names.join(' & ');
+  }
+}
 
 async function loadInvite() {
-  const loaderEl  = document.getElementById('loader')!;
-  const contentEl = document.getElementById('invite-content')!;
-  const namesEl   = document.getElementById('guest-names')!;
-  const seatsEl   = document.getElementById('guest-seats')!;
-  const errEl     = document.getElementById('guest-error') as HTMLElement;
-  const loaderLabel = loaderEl.querySelector('.title') as HTMLElement | null;
+  const loaderEl  = $('loader');
+  const contentEl = $('invite-content');
+  const errEl     = $('guest-error');
+  const loaderLabel = loaderEl?.querySelector('.title') as HTMLElement | null;
 
   // Estado inicial
-  loaderEl.classList.remove('hidden');
-  contentEl.classList.add('hidden','opacity-0');
-  errEl.classList.add('hidden');
+  loaderEl?.classList.remove('hidden');
+  contentEl?.classList.add('hidden','opacity-0');
+  errEl?.classList.add('hidden');
 
   const id = (new URLSearchParams(location.search).get('i') ?? '').trim();
 
   const stayOnLoaderWithError = (msg: string) => {
     if (loaderLabel) loaderLabel.textContent = msg;
-    namesEl.textContent = '—';
-    seatsEl.textContent = '—';
-    errEl.classList.remove('hidden');
+    errEl?.classList.remove('hidden');
   };
 
   const revealContent = () => {
-    loaderEl.classList.add('hidden');
+    loaderEl?.classList.add('hidden');
+    if (!contentEl) return;
     contentEl.classList.remove('hidden');
-    requestAnimationFrame(()=>{
+    requestAnimationFrame(() => {
       contentEl.classList.remove('opacity-0');
       contentEl.classList.add('opacity-100');
     });
@@ -39,7 +66,7 @@ async function loadInvite() {
   try {
     if (!id) { stayOnLoaderWithError('Falta el código de invitación'); return; }
 
-    // ✅ BASE absoluta (evita excepción de new URL con '/')
+    // BASE absoluta segura
     const base = (import.meta as any).env?.BASE_URL || '/';
     const absBase = window.location.origin + (base.endsWith('/') ? base : base + '/');
     const url = new URL('invites.json', absBase).toString();
@@ -51,14 +78,15 @@ async function loadInvite() {
     const inv  = list.find(x => x.id === id);
     if (!inv) { stayOnLoaderWithError('El código no es válido'); return; }
 
-    const names = Array.isArray(inv.names) ? inv.names.join(' & ') : String(inv.names ?? 'Invitado/a');
-    namesEl.textContent = names;
-    seatsEl.textContent = String(inv.seats ?? 1);
-    document.title = `Invitación — ${names}`;
+    const names = Array.isArray(inv.names) ? inv.names : [String(inv.names ?? 'Invitado/a')];
 
-    revealContent(); // 👈 solo si el ID existe
+    // Pintar UI
+    renderGuests(names, inv.seats ?? 1);
+    document.title = `Invitación — ${names.join(' & ')}`;
+
+    revealContent();
   } catch (e) {
-    console.error('[invite] error', e); // útil para depurar
+    console.error('[invite] error', e);
     stayOnLoaderWithError('Ocurrió un error inesperado');
   }
 }

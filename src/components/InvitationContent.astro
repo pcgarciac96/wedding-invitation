@@ -1,80 +1,172 @@
 ---
-// import Countdown from './Countdown.astro';
-
+import Countdown from "./Countdown.astro";
+import EventDetails from "./EventDetails.astro";
+import FiestaSection from "./FiestaSection.astro";
 interface Props {
   id?: string;
-  weddingDateISO: string;     // "YYYY-MM-DD"
-  weddingDateText: string;    // "14 de febrero de 2026"
-  timeText?: string;          // "4:00 p. m."
-  venueText?: string;         // "Hacienda El Encanto"
-  showAdultsOnly?: boolean;   // true/false
-  showSeatNote?: boolean;     // true/false
+  weddingDateISO: string; // "YYYY-MM-DDT16:00:00-05:00"
+  weddingDateText: string; // "14 de febrero de 2026"
+  timeText?: string; // "4:00 p. m."
+  venueText?: string; // "Hacienda El Encanto"
+  showAdultsOnly?: boolean;
+  showSeatNote?: boolean;
 }
 
 const {
-  id = 'invite-content',
+  id = "invite-content",
   weddingDateISO,
   weddingDateText,
-  timeText = '4:00 p. m.',
-  venueText = 'Hacienda El Encanto',
+  timeText = "4:00 p. m.",
+  venueText = "Hacienda El Encanto",
   showAdultsOnly = true,
   showSeatNote = true,
 } = Astro.props;
 ---
-<section id={id} class="hidden opacity-0 transition-opacity duration-300">
-  <section class="mx-auto w-full max-w-4xl">
-    <div class="rounded-2xl border border-white/10 bg-white/10 p-6 md:p-8 shadow-2xl backdrop-blur">
-      <header class="text-center">
-        <span class="inline-block rounded-full bg-white/10 px-3 py-1 text-xs uppercase tracking-widest text-slate-300">
-          ¡Nos casamos!
-        </span>
-        <h1 class="font-serif text-4xl md:text-6xl mt-3">Ana &amp; Carlos</h1>
-        <p class="text-slate-300 mt-2">Con mucha alegría te invitamos a celebrar nuestra boda.</p>
-      </header>
 
-      <div class="my-6 h-px w-40 mx-auto bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+<!--
+  Wrapper con tema (variables CSS). Cambia --accent una sola vez
+  para ajustar toda la paleta del bloque “Invitados”.
+-->
+<section
+  id={id}
+  data-invite-theme
+  class="hidden opacity-0 transition-opacity duration-300"
+>
+  <section class="mx-auto w-full max-w-4xl bg-[#FDF4D4]">
+    <!-- Hero: foto + textos superpuestos -->
+    <div
+      class="relative w-full overflow-hidden aspect-[9/19] md:aspect-auto md:h-[72vh]"
+    >
+      <!-- Foto de portada (si está en /public usa ruta absoluta) -->
+      <img
+        src="/Heroimage.JPG"
+        alt="Daniela y Pablo"
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
 
-      <div class="grid gap-4 text-center md:grid-cols-3">
-        <div>
-          <small class="block text-slate-300 font-semibold">Cuándo</small>
-          <strong class="text-base">
-            <time datetime={weddingDateISO}>{weddingDateText}</time>
-          </strong>
-        </div>
-        <div>
-          <small class="block text-slate-300 font-semibold">Hora</small>
-          <strong class="text-base">{timeText}</strong>
-        </div>
-        <div>
-          <small class="block text-slate-300 font-semibold">Dónddddde</small>
-          <!-- <strong class="text-base">{venueText}</strong> -->
-        </div>
-      </div>
-
-      <!-- <Countdown dateISO={weddingDateISO} /> -->
-
-      <!-- Bloque dinámico (rellenado por invite.ts) -->
-      <section class="text-center mt-4">
-        <p class="text-lg"><strong id="guest-names">Cargando nombres…</strong></p>
-        <p class="text-slate-300">Invitación válida para <strong id="guest-seats">—</strong> persona(s).</p>
-        <p id="guest-error" class="mx-auto mt-3 max-w-xl rounded-xl border border-rose-300/40 bg-rose-900/30 px-4 py-2 text-rose-100 hidden">
-          No pudimos encontrar tu invitación. Verifica el enlace 💌
+      <!-- Texto -->
+      <div
+        class="absolute inset-0 flex flex-col items-center text-center px-4 pt-6 md:pt-10 text-white drop-shadow-[0_1px_6px_rgba(0,0,0,.35)]"
+      >
+        <p
+          class="max-w-[18ch] md:max-w-[34ch] font-serif italic text-xl leading-relaxed md:text-3xl"
+        >
+          “Cuando estamos juntos, cualquier rincón de la tierra es cielo”
         </p>
 
-        {(showAdultsOnly || showSeatNote) && (
-          <div class="mt-4 text-sm text-slate-300 space-y-1">
-            {showAdultsOnly && <p>Recepción <strong>solo para adultos</strong>.</p>}
-            {showSeatNote && <p>La invitación aplica únicamente para las personas indicadas en este enlace.</p>}
-          </div>
-        )}
-      </section>
+        <div class="w-40 md:w-64 h-px my-3 md:my-5 bg-white/80"></div>
 
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 font-semibold hover:bg-white/15 transition"
-           href="https://maps.google.com/?q=Hacienda%20El%20Encanto" target="_blank" rel="noopener">Ver ubicación</a>
+        <h1 class="font-serif text-3xl md:text-6xl tracking-wide">
+          Daniela <span class="mx-2">&</span> Pablo
+        </h1>
+
+        <!-- Fecha con líneas a los lados -->
+        <span
+          class="mt-1 md:mt-2 text-sm md:text-base font-semibold relative inline-flex items-center px-10"
+        >
+          <span
+            class="absolute left-0 top-1/2 -translate-y-1/2 w-8 md:w-16 h-px bg-white/70"
+          ></span>
+          {weddingDateText}
+          <span
+            class="absolute right-0 top-1/2 -translate-y-1/2 w-8 md:w-16 h-px bg-white/70"
+          ></span>
+        </span>
+
+        <!-- Lugar y hora (opcional) -->
+        
+      </div>
+    </div>
+
+    <!-- Cuenta regresiva -->
+    <Countdown dateISO={weddingDateISO} />
+
+    <!-- INVITADOS (nuevo bloque) -->
+    <section
+      aria-labelledby="guests-title"
+      class="mx-auto my-10 max-w-xl text-center px-4"
+    >
+      <h2
+        id="guests-title"
+        class="relative inline-block font-serif italic text-3xl md:text-4xl text-[var(--accent)]"
+      >
+        <span
+          class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
+                 after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
+        >
+          Invitados
+        </span>
+      </h2>
+
+      <!-- círculo con número de cupos -->
+      <div class="mt-8 flex justify-center">
+        <div
+          id="guest-seats-circle"
+          class="grid h-14 w-14 place-items-center rounded-full bg-[var(--circle-bg)] text-[var(--circle-fg)] font-serif text-2xl"
+          aria-label="Número de invitados"
+        >
+          —
+        </div>
       </div>
 
-      <footer class="mt-8 text-center text-sm text-slate-400">Dress code: Elegante</footer>
-    </div>
+      <!-- lista de nombres -->
+      <ul id="guest-names-list" class="mt-6 space-y-3">
+        <!-- JS insertará <li> por cada invitado -->
+      </ul>
+
+      <!-- nota -->
+      <p class="mt-6 mx-auto max-w-md font-serif italic text-[var(--note-fg)]">
+        “Queremos que sea una celebración íntima y especial, por eso hemos
+        limitado la lista de invitados”
+      </p>
+
+   
+      <!-- error -->
+      <p
+        id="guest-error"
+        class="mx-auto mt-4 max-w-xl rounded-xl border border-rose-300/40 bg-rose-900/20 px-4 py-2 text-rose-900 hidden"
+      >
+        No pudimos encontrar tu invitación. Verifica el enlace 💌
+      </p>
+    </section>
+
+    <EventDetails
+      dateLine1="Sábado 14 de Marzo de 2026"
+      dateLine2="4:00 pm"
+      venueName="Amazilia Hotel"
+      venueAddress="Vía Pereira a Cerritos Entrada 8, Cafelia, Risaralda"
+      rsvpHref="https://wa.me/57XXXXXXXXXX?text=Hola%20confirmo%20asistencia%20a%20la%20boda"
+      mapsHref="https://maps.google.com/?q=Amazilia%20Hotel"
+    />
+
+    <FiestaSection
+  intro="Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta."
+  dressHref="#dresscode" 
+  rulesHref="#restricciones"
+  giftsHref="#regalos"
+/>
+
+
+    <footer class="pb-8 text-center text-sm text-[var(--notes-muted)]">
+      Dress code: Elegante
+    </footer>
   </section>
+
+  <style>
+    [data-invite-theme] {
+      /* Cambia solo --accent para ajustar todo el bloque */
+      --accent: #b2795c;
+
+      --circle-bg: #d9cdb9b3; /* sepia claro (70%) */
+      --circle-fg: #8b6f5b;
+
+      --tag-bg: #d9cdb9b3;
+      --tag-fg: #6f5a4e;
+
+      --note-fg: #9a6e59;
+      --notes-muted: #7b6b5e;
+    }
+  </style>
 </section>
