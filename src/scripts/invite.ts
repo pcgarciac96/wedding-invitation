@@ -22,7 +22,7 @@ function renderGuests(names: string[], seats: number) {
     namesList.innerHTML = '';
     names.forEach((n) => {
       const li = document.createElement('li');
-      li.className = 'mx-auto w-[18rem] md:w-[22rem] rounded-xl bg-[var(--tag-bg)] text-[var(--tag-fg)] px-6 py-2 font-serif italic text-xl';
+      li.className = 'mx-auto w-[18rem] md:w-[22rem] rounded-xl  px-6 py-2 bg-[#E6DDC0] text-[#B88358] font-italianno  text-3xl';
       li.textContent = n;
       namesList.appendChild(li);
     });

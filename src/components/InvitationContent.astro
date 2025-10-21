@@ -50,15 +50,13 @@ const {
       <div
         class="absolute inset-0 flex flex-col items-center text-center px-4 pt-6 md:pt-10 text-white drop-shadow-[0_1px_6px_rgba(0,0,0,.35)]"
       >
-        <p
-          class="max-w-[18ch] md:max-w-[34ch] font-serif italic text-xl leading-relaxed md:text-3xl"
-        >
+        <p class="font-italianno italic text-4xl leading-relaxed md:text-5xl">
           “Cuando estamos juntos, cualquier rincón de la tierra es cielo”
         </p>
 
-        <div class="w-40 md:w-64 h-px my-3 md:my-5 bg-white/80"></div>
+        <div class="w-60 md:w-80 h-px my-3 md:my-5 bg-white/80"></div>
 
-        <h1 class="font-serif text-3xl md:text-6xl tracking-wide">
+        <h1 class="font-italianno text-4xl md:text-6xl tracking-wide">
           Daniela <span class="mx-2">&</span> Pablo
         </h1>
 
@@ -76,7 +74,6 @@ const {
         </span>
 
         <!-- Lugar y hora (opcional) -->
-        
       </div>
     </div>
 
@@ -88,23 +85,27 @@ const {
       aria-labelledby="guests-title"
       class="mx-auto my-10 max-w-xl text-center px-4"
     >
-      <h2
-        id="guests-title"
-        class="relative inline-block font-serif italic text-3xl md:text-4xl text-[var(--accent)]"
-      >
-        <span
-          class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
+      <div class="flex justify-center ">
+        <div class="flex justify-center border-y border-[#B88358] w-80">
+          <h2
+            id="guests-title"
+            class="relative inline-block font-italianno text-6xl md:text-4xl text-[var(--accent)]"
+          >
+            <span
+              class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
                  after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
-        >
-          Invitados
-        </span>
-      </h2>
+            >
+              Invitados
+            </span>
+          </h2>
+        </div>
+      </div>
 
       <!-- círculo con número de cupos -->
       <div class="mt-8 flex justify-center">
         <div
           id="guest-seats-circle"
-          class="grid h-14 w-14 place-items-center rounded-full bg-[var(--circle-bg)] text-[var(--circle-fg)] font-serif text-2xl"
+          class="flex justify-center items-center h-14 w-14  rounded-full bg-[#E6DDC0] text-[#B88358] font-italianno  text-4xl"
           aria-label="Número de invitados"
         >
           —
@@ -117,12 +118,11 @@ const {
       </ul>
 
       <!-- nota -->
-      <p class="mt-6 mx-auto max-w-md font-serif italic text-[var(--note-fg)]">
+      <p class="mt-6 mx-auto max-w-md  text-[#B88358] font-italianno  text-3xl">
         “Queremos que sea una celebración íntima y especial, por eso hemos
         limitado la lista de invitados”
       </p>
 
-   
       <!-- error -->
       <p
         id="guest-error"
@@ -137,17 +137,16 @@ const {
       dateLine2="4:00 pm"
       venueName="Amazilia Hotel"
       venueAddress="Vía Pereira a Cerritos Entrada 8, Cafelia, Risaralda"
-      rsvpHref="https://wa.me/57XXXXXXXXXX?text=Hola%20confirmo%20asistencia%20a%20la%20boda"
+      rsvpHref="https://wa.me/573204609701?text=Hola%20confirmo%20asistencia%20a%20la%20boda"
       mapsHref="https://maps.google.com/?q=Amazilia%20Hotel"
     />
 
     <FiestaSection
-  intro="Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta."
-  dressHref="#dresscode" 
-  rulesHref="#restricciones"
-  giftsHref="#regalos"
-/>
-
+      intro="Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta."
+      dressHref="#dresscode"
+      rulesHref="#restricciones"
+      giftsHref="#regalos"
+    />
 
     <footer class="pb-8 text-center text-sm text-[var(--notes-muted)]">
       Dress code: Elegante

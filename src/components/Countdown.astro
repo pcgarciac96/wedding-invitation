@@ -31,30 +31,31 @@ const {
   class={`mx-auto w-full max-w-[680px] px-4 py-8 ${extra}`}
   style={`--bg:${bg}; --text:${text}; --accent:${accent};`}
 >
-  <div class="rounded-2xl border border-[color:var(--accent)]/50 bg-[color:var(--bg)]/95 p-6 md:p-10 text-center shadow-lg">
-    <h2 class="font-serif text-3xl md:text-5xl tracking-wide text-[color:var(--text)] mb-4 md:mb-6">
+  <div class="rounded-2xl p-6 md:p-10 text-center">
+       <h2 class="font-italianno text-6xl md:text-5xl tracking-wide text-[#B88358] mb-4 md:mb-6">
       <span id={`${id}-title`}>{title}</span>
     </h2>
+   
 
-    <div class="grid grid-cols-4 items-stretch text-[color:var(--text)]" aria-live="polite" aria-atomic="true">
+    <div class="grid grid-cols-4 items-stretch text-[#B88358]" aria-live="polite" aria-atomic="true">
       <div class="px-1 md:px-3">
-        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="days">00</div>
-        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Días</div>
+        <div class="text-5xl md:text-6xl font-italianno tabular-nums leading-none" data-cc="days">00</div>
+        <div class="mt-1 md:mt-2 text-2xl md:text-sm font-italianno opacity-80">Días</div>
       </div>
 
       <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
-        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="hours">00</div>
-        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Horas</div>
+        <div class="text-5xl md:text-6xl font-italianno tabular-nums leading-none" data-cc="hours">00</div>
+        <div class="mt-1 md:mt-2 text-2xl md:text-sm font-italianno opacity-80">Horas</div>
       </div>
 
       <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
-        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="mins">00</div>
-        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Min</div>
+        <div class="text-5xl md:text-6xl font-italianno tabular-nums leading-none" data-cc="mins">00</div>
+        <div class="mt-1 md:mt-2 text-2xl md:text-sm font-italianno opacity-80">Min</div>
       </div>
 
       <div class="px-1 md:px-3 border-l border-[color:var(--accent)]/60">
-        <div class="text-4xl md:text-6xl font-semibold tabular-nums leading-none" data-cc="secs">00</div>
-        <div class="mt-1 md:mt-2 text-xs md:text-sm italic opacity-80">Seg</div>
+        <div class="text-5xl md:text-6xl font-italianno tabular-nums leading-none" data-cc="secs">00</div>
+        <div class="mt-1 md:mt-2 text-2xl md:text-sm font-italianno opacity-80">Seg</div>
       </div>
     </div>
   </div>

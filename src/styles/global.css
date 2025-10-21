@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .font-italianno {
+    font-family: "Italianno", cursive;
+    font-weight: 400;
+  }
+}
