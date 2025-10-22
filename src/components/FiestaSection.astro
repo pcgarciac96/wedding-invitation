@@ -1,40 +1,29 @@
 ---
 interface Props {
-  // Encabezado principal
-  title?: string; // "Fiesta"
-  intro?: string; // "Hagamos juntos una fiesta épica..."
+  title?: string;
+  intro?: string;
 
-  // Card 1 — Dress code
-  dressTitle?: string; // "Dress code"
-  dressDesc?: string; // "Una orientación para tu vestuario."
-  dressHref?: string; // enlace a sección/modal/otra página
+  dressTitle?: string;
+  dressDesc?: string;
 
-  // Card 2 — Restricciones
-  rulesTitle?: string; // "Restricciones"
-  rulesDesc?: string; // "Información adicional que se debe cumplir."
-  rulesHref?: string;
+  rulesTitle?: string;
+  rulesDesc?: string;
 
-  // Lluvia de sobres
-  giftsTitle?: string; // "Lluvia de sobres"
+  giftsTitle?: string;
   giftsDesc?: string;
-  giftsHref?: string; // enlace a opciones (transferencias, etc.)
 
-  class?: string; // clases extra del contenedor
+  class?: string;
 }
 
-// Valores por defecto estilo maqueta
 const {
   title = "Fiesta",
   intro = "Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.",
   dressTitle = "Dress code",
   dressDesc = "Una orientación para tu vestuario.",
-  dressHref = "#dresscode",
   rulesTitle = "Restricciones",
   rulesDesc = "Información adicional que se debe cumplir.",
-  rulesHref = "#restricciones",
   giftsTitle = "Lluvia de sobres",
-  giftsDesc = "Preferimos que lo presentes que deseen hacernos sean en efectivo o si eres como Pablo y no te gusta cargar efectivo aqui te dejamos otras opciones:",
-  giftsHref = "#regalos",
+  giftsDesc = "Preferimos que los presentes que deseen hacernos sean en efectivo; si no te gusta cargar efectivo aquí te dejamos opciones.",
   class: extra = "",
 } = Astro.props;
 ---
@@ -43,30 +32,24 @@ const {
   class={`mx-auto w-full max-w-[900px] px-4 py-10 ${extra}`}
   style="--cream:#FBF4E8; --sepia:#8B6B5E; --accent:#D8C5A8;"
 >
-  <!-- Título con líneas -->
+  <!-- Título -->
   <header class="text-center text-[color:var(--sepia)]">
     <div class="flex justify-center">
       <div class="flex justify-center border-y border-[#B88358] w-48">
-        <h2
-          id="guests-title"
-          class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
-        >
+        <h2 class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]">
           <span
             class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
-                 after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
+                   after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
           >
             {title}
           </span>
         </h2>
       </div>
     </div>
-
-    <p class="mx-auto mt-4 max-w-[36ch] font-italianno text-[#B88358] text-3xl">
-      {intro}
-    </p>
+    <p class="mx-auto mt-4 max-w-[36ch] font-italianno text-[#B88358] text-3xl">{intro}</p>
   </header>
 
-  <!-- Tarjetas: mobile en columna / desktop apiladas con buen aire -->
+  <!-- Tarjetas -->
   <div class="mt-10 grid gap-8 md:grid-cols-2 md:gap-10">
     <!-- Card Dress code -->
     <article class="rounded-[24px] p-6 text-center text-[#B88358] shadow-2xl">
@@ -122,15 +105,15 @@ const {
           </defs>
         </svg>
       </div>
+      <p class="text-[#B88358]/90">{dressDesc}</p>
 
-      <p class="font-italianno opacity-80 text-2xl text-[#B88358]">
-        {dressDesc}
-      </p>
-      <a
-        href={dressHref}
-        class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477] hover:bg-[color:var(--sepia)]/15 transition"
-        >Ver más</a
+      <button
+        type="button"
+        class="mt-5 inline-flex items-center justify-center rounded-xl border border-[color:var(--accent)]/70 bg-white/60 px-5 py-2 font-semibold hover:bg-white/80 transition"
+        data-open-modal="modal-dress"
       >
+        Ver más
+      </button>
     </article>
 
     <!-- Card Restricciones -->
@@ -170,44 +153,301 @@ const {
           </defs>
         </svg>
       </div>
+      <p class="text-[#B88358]/90">{rulesDesc}</p>
 
-      <p class="font-italianno opacity-80 text-2xl text-[#B88358]">
-        {rulesDesc}
-      </p>
-      <a
-        href={rulesHref}
-        class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477] hover:bg-[color:var(--sepia)]/15 transition"
-        >Ver más</a
+      <button
+        type="button"
+        class="mt-5 inline-flex items-center justify-center rounded-xl border border-[color:var(--accent)]/70 bg-white/60 px-5 py-2 font-semibold hover:bg-white/80 transition"
+        data-open-modal="modal-rules"
       >
+        Ver más
+      </button>
     </article>
   </div>
 
   <!-- Lluvia de sobres -->
   <section class="mt-12 text-center text-[color:var(--sepia)]">
     <div class="flex justify-center">
-      <div class="flex justify-center border-y border-[#B88358] w-72">
-        <h2
-          id="guests-title"
-          class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
-        >
+      <div class="flex justify-center border-y border-[#B88358] w-64">
+        <h3 class="relative inline-block font-italianno text-5xl md:text-6xl text-[#B88358]">
           <span
             class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
-                 after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
+                   after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
           >
             {giftsTitle}
           </span>
-        </h2>
+        </h3>
       </div>
     </div>
 
-    <p class="font-italianno opacity-80 text-3xl text-[#B88358] pt-10">
-      {giftsDesc}
-    </p>
+    <p class="mx-auto mt-4 max-w-[38ch] font-italianno text-[#B88358] text-3xl">{giftsDesc}</p>
 
-    <a
-      href={giftsHref}
-      class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477] hover:bg-[color:var(--sepia)]/15 transition"
-      >Ver opciones</a
+    <button
+      type="button"
+      class="mt-5 inline-flex items-center justify-center rounded-xl border border-[color:var(--accent)]/70 bg-white/60 px-6 py-2 font-semibold hover:bg-white/80 transition"
+      data-open-modal="modal-gifts"
     >
+      Ver opciones
+    </button>
   </section>
+
+  <!-- ========= Modales ========= -->
+
+  <!-- Modal: Dress code (scroll interno + tabs Hombre/Mujer) -->
+  <div id="modal-dress" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-dress-title">
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-3xl rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4">
+        <h4 id="modal-dress-title" class="font-italianno text-4xl">Dress code</h4>
+        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+                data-close-modal>Cerrar</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <p><strong>Etiqueta sugerida:</strong> Elegante / Formal.</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>Colores recomendados: gama tierra, neutros, pasteles.</li>
+          <li>Evitar blanco/ivory (reservado para la novia).</li>
+          <li>Caballeros: traje oscuro o blazer + pantalón formal.</li>
+          <li>Damas: vestido largo o cóctel elegante.</li>
+        </ul>
+
+        <!-- Selector Hombre / Mujer -->
+        <div class="mt-5">
+          <div class="inline-flex gap-2 rounded-xl border border-[color:var(--accent)]/60 bg-white/40 p-1">
+            <button
+              type="button"
+              class="tab-btn rounded-lg px-3 py-1 text-sm font-semibold hover:bg-white/70 transition bg-white"
+              data-tab-group="dress"
+              data-tab="men"
+              aria-selected="true"
+            >
+              Hombre
+            </button>
+            <button
+              type="button"
+              class="tab-btn rounded-lg px-3 py-1 text-sm font-semibold hover:bg-white/70 transition"
+              data-tab-group="dress"
+              data-tab="women"
+              aria-selected="false"
+            >
+              Mujer
+            </button>
+          </div>
+
+          <!-- Panel: Hombres -->
+          <div class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3" data-panel-group="dress" data-panel="men">
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?man,suit" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?man,suit" alt="Hombre con traje formal" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Traje formal</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?tuxedo,man" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?tuxedo,man" alt="Esmoquin" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Esmoquin</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?menswear,blazer" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?menswear,blazer" alt="Blazer + camisa" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Blazer + camisa</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?dress-shoes,men" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?dress-shoes,men" alt="Zapatos de vestir" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Zapatos de vestir</figcaption>
+            </figure>
+          </div>
+
+          <!-- Panel: Mujeres -->
+          <div class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 hidden" data-panel-group="dress" data-panel="women">
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?woman,evening-gown" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?woman,evening-gown" alt="Vestido de noche" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Vestido de noche</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?woman,cocktail-dress" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?woman,cocktail-dress" alt="Vestido cóctel elegante" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Cóctel elegante</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?heels,elegant" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?heels,elegant" alt="Tacones elegantes" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Tacones</figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
+              <a href="https://source.unsplash.com/1200x1600/?woman,evening,accessories" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://source.unsplash.com/600x800/?woman,evening,accessories" alt="Accesorios de noche" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              </a>
+              <figcaption class="px-2 py-1 text-xs text-center">Accesorios</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="text-xs opacity-70 mt-3">
+          Las imágenes se cargan desde Internet (Unsplash) y pueden variar en cada visita. Puedes reemplazar las URLs por tus fotos preferidas.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Restricciones -->
+  <div id="modal-rules" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-rules-title">
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4">
+        <h4 id="modal-rules-title" class="font-italianno text-4xl">Restricciones</h4>
+        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+                data-close-modal>Cerrar</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <ul class="list-disc pl-6 space-y-1">
+          <li>Recepción <strong>solo para adultos</strong>.</li>
+          <li>La invitación aplica únicamente para las personas indicadas en el enlace.</li>
+          <li>No se permite ingresar con bebidas.</li>
+          <li>Horario límite de ingreso: 5:00 p. m.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Lluvia de sobres -->
+  <div id="modal-gifts" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-gifts-title">
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4">
+        <h4 id="modal-gifts-title" class="font-italianno text-4xl">{giftsTitle}</h4>
+        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+                data-close-modal>Cerrar</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <p>Tu presencia es nuestro mejor regalo. Si deseas hacernos un detalle:</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><strong>Sobre</strong> en la recepción.</li>
+          <li><strong>Transferencia</strong>: Banco Ejemplo — CTA: 000-000000 — Titular: Ana Pérez.</li>
+          <li><strong>Nequi/Daviplata</strong>: 300 000 0000 (Carlos).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estilos/animación simples -->
+  <style>
+    .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; }
+    .modal.hidden { display: none; }
+    .modal .modal-backdrop { opacity: 0; transition: opacity .2s ease; }
+    .modal .modal-panel { transform: translateY(8px); opacity: 0; transition: transform .2s ease, opacity .2s ease; }
+    .modal[data-open="true"] .modal-backdrop { opacity: 1; }
+    .modal[data-open="true"] .modal-panel { opacity: 1; transform: translateY(0); }
+  </style>
+
+  <!-- JS inline: abrir/cerrar + tabs -->
+  <script is:inline>
+    (function () {
+      const openers = document.querySelectorAll('[data-open-modal]');
+      const CLOSE_ATTR = 'data-close-modal';
+
+      function lockScroll() {
+        const y = window.scrollY;
+        document.body.dataset.scrollY = String(y);
+        document.body.style.top = `-${y}px`;
+        document.body.classList.add('overflow-hidden');
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      }
+
+      function unlockScroll() {
+        const y = parseInt(document.body.dataset.scrollY || '0', 10);
+        document.body.classList.remove('overflow-hidden');
+        document.body.style.top = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        window.scrollTo(0, y);
+      }
+
+      function focusFirst(el) {
+        const sel = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+        const first = el.querySelector(sel);
+        if (first) first.focus();
+      }
+
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          modal.setAttribute('data-open', 'true');
+        });
+        lockScroll();
+        focusFirst(modal);
+      }
+
+      function closeModal(modal) {
+        modal.removeAttribute('data-open');
+        setTimeout(() => modal.classList.add('hidden'), 200);
+        unlockScroll();
+      }
+
+      openers.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-open-modal');
+          if (id) openModal(id);
+        });
+      });
+
+      document.addEventListener('click', (ev) => {
+        // Cerrar
+        const closeBtn = ev.target.closest('[' + CLOSE_ATTR + ']');
+        if (closeBtn) {
+          const modal = closeBtn.closest('.modal');
+          if (modal) closeModal(modal);
+          return;
+        }
+        const backdrop = ev.target.classList && ev.target.classList.contains('modal-backdrop');
+        if (backdrop) {
+          const modal = ev.target.closest('.modal');
+          if (modal) closeModal(modal);
+          return;
+        }
+
+        // Tabs (Hombre/Mujer)
+        const tabBtn = ev.target.closest('[data-tab][data-tab-group]');
+        if (tabBtn) {
+          const group = tabBtn.getAttribute('data-tab-group');
+          const value = tabBtn.getAttribute('data-tab');
+          const scope = tabBtn.closest('.modal') || document;
+
+          // Toggle buttons
+          scope.querySelectorAll('.tab-btn[data-tab-group="' + group + '"]').forEach(b => {
+            const active = b.getAttribute('data-tab') === value;
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
+            b.classList.toggle('bg-white', active);
+          });
+
+          // Toggle panels
+          scope.querySelectorAll('.tab-panel[data-panel-group="' + group + '"]').forEach(p => {
+            const show = p.getAttribute('data-panel') === value;
+            p.classList.toggle('hidden', !show);
+          });
+        }
+      });
+
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape') {
+          const open = document.querySelector('.modal[data-open="true"]');
+          if (open) closeModal(open);
+        }
+      });
+    })();
+  </script>
 </section>
