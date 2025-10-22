@@ -64,22 +64,37 @@ const {
     </div>
 
     <!-- Título -->
-    <div class="mx-auto my-2 h-px w-40 md:w-56 bg-[color:var(--sepia)]/50">
+     <div class="flex justify-center ">
+        <div class="flex justify-center border-y border-[#B88358] w-48">
+          <h2
+            id="guests-title"
+            class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
+          >
+            <span
+              class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
+                 after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
+            >
+              {title}
+            </span>
+          </h2>
+        </div>
+      </div>
+    <!-- <div class="mx-auto my-2 h-px w-40 md:w-56 bg-[color:var(--sepia)]/50">
     </div>
 
     <h3 class="font-italianno text-4xl md:text-5xl mb-2">{title}</h3>
     <div class="mx-auto my-2 h-px w-40 md:w-56 bg-[color:var(--sepia)]/50">
-    </div>
+    </div> -->
 
     <!-- Layout: móvil en columna / escritorio en dos columnas -->
     <div class="mt-6 grid gap-8 md:grid-cols-2 md:gap-10">
       <!-- Columna: Día -->
       <div>
-        <h4 class="font-serif text-3xl md:text-4xl mb-3">Día</h4>
-        <p class="italic text-base md:text-lg opacity-90">{dateLine1}</p>
+        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">Día</h4>
+        <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine1}</p>
         {
           dateLine2 && (
-            <p class="italic text-base md:text-lg opacity-90">{dateLine2}</p>
+            <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine2}</p>
           )
         }
 
@@ -89,7 +104,7 @@ const {
               href={rsvpHref}
               target="_blank"
               rel="noopener"
-              class="mt-5 inline-block rounded-2xl bg-[color:var(--sepia)]/10 px-6 py-3 font-semibold text-[color:var(--sepia)] border border-[color:var(--sepia)]/30 hover:bg-[color:var(--sepia)]/15 transition"
+              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477]  hover:bg-[color:var(--sepia)]/15 transition"
               aria-label="Confirmar asistencia"
             >
               Confirmar Asistencia
@@ -100,9 +115,9 @@ const {
 
       <!-- Columna: Lugar -->
       <div>
-        <h4 class="font-serif text-3xl md:text-4xl mb-3">{venueTitle}</h4>
-        <p class="text-lg md:text-xl font-medium">{venueName}</p>
-        {venueAddress && <p class="italic opacity-90">{venueAddress}</p>}
+        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">{venueTitle}</h4>
+        <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{venueName}</p>
+        {venueAddress && <p class="font-italianno  text-2xl md:text-lg opacity-90 text-[#B88358]">{venueAddress}</p>}
 
         {
           mapsHref && (
@@ -110,7 +125,7 @@ const {
               href={mapsHref}
               target="_blank"
               rel="noopener"
-              class="mt-5 inline-block rounded-2xl bg-[color:var(--sepia)]/10 px-6 py-3 font-semibold text-[color:var(--sepia)] border border-[color:var(--sepia)]/30 hover:bg-[color:var(--sepia)]/15 transition"
+              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477]  hover:bg-[color:var(--sepia)]/15 transition"
               aria-label="Cómo llegar"
             >
               Cómo llegar
