@@ -9,16 +9,15 @@ interface Props {
   heart1?: string;
   heart2?: string;
 
-  /** Colores (contornos corazón) */
-  stroke1?: string;
-  stroke2?: string;
-
   /** Texto y botón */
   textColor?: string;
   btnFill?: string;
 
   /** Alto del loader */
   height?: string;
+
+  /** Modo: 'inline' no bloquea scroll, 'overlay' sí (fijo a pantalla) */
+  overlay?: boolean;
 }
 
 const {
@@ -30,22 +29,20 @@ const {
   heart1 = '#ffffff',
   heart2 = '#ffffff',
 
-  // NUEVA PALETA (contornos)
-  stroke1 = '#4A7D79',
-  stroke2 = '#FDF4D4',
-
-  // Puedes ajustar si quieres
   textColor = '#3a4a7a',
   btnFill = 'rgba(255, 224, 203, 0.55)',
 
-  height = '100vh',
+  height = '100svh',
+  overlay = false,
 } = Astro.props;
+
+const modeClass = overlay ? 'loader-overlay' : 'loader-inline';
 ---
 
-<section id={id} aria-busy="true" aria-live="polite">
+<section id={id} aria-busy="true" aria-live="polite" class={modeClass}>
   <div
     class="stage"
-    style={`--text:${textColor}; --btn-fill:${btnFill}; --h:${height}; --stroke1:${stroke1}; --stroke2:${stroke2};`}
+    style={`--text:${textColor}; --btn-fill:${btnFill}; --h:${height};`}
   >
     <!-- Capa blur (metaballs) -->
     <div class="metaballs" aria-hidden="true">
@@ -63,14 +60,30 @@ const {
   </div>
 </section>
 
+<!-- ❗️Reemplaza tu CSS global previo por este: bloquea scroll SOLO en modo overlay -->
+<style is:global>
+  html, body { height: 100%; margin: 0; }
+  @supports selector(body:has(section.loader-overlay[aria-busy="true"])) {
+    body:has(section.loader-overlay[aria-busy="true"]) { overflow: hidden; }
+  }
+</style>
+
 <style>
+  /* ===== MODOS ===== */
+  .loader-overlay{ position: fixed; inset: 0; z-index: 9999; overscroll-behavior: contain; }
+  .loader-inline{ position: relative; inset: auto; z-index: 1; }
+
+  /* ===== STAGE ===== */
   .stage{
     position:relative;
-    width:100vw;
-    height:var(--h);
+    inline-size:100%;
+    block-size:var(--h, 100dvh);
+    min-block-size:360px;
     overflow:hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
-    /* NUEVA PALETA DE FONDO */
+
     background: linear-gradient(180deg,
       #4A7D79 0%,
       #9ACDAA 36%,
@@ -79,85 +92,98 @@ const {
     );
   }
 
-  /* Metaballs (difuminados) */
+  /* ===== METABALLS ===== */
   .metaballs{
-    position:absolute;
-    inset:0;
-    display:grid;
-    place-items:center;
-    filter: blur(10px) contrast(20);
-    pointer-events:none;
-    z-index:0;
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    /* filter: blur(clamp(12px, 3vmin, 22px)) contrast(14); */
+    filter: blur(clamp(2px, 9vmin, 2px));
+
+    pointer-events:none; z-index:0;
   }
 
   /* Corazones (relleno) */
   .heart{
-    --c:#fff;
-    width:70px; height:70px;
+    --c:#fff; --heart: clamp(48px, 10vmin, 110px);
+    inline-size:var(--heart); block-size:var(--heart);
     position:absolute; top:50%; left:50%;
     transform:translate(-50%,-50%) rotate(-45deg);
     background:var(--c);
-    border-radius:8px;
+    border-radius: clamp(6px, 1.2vmin, 12px);
+    mix-blend-mode: screen;      /* o 'plus-lighter' si lo soporta tu target */
+    opacity: 0.95;
   }
   .heart::before,
   .heart::after{
-    content:"";
-    position:absolute;
-    width:70px; height:70px;
-    background:var(--c);
-    border-radius:50%;
+    content:""; position:absolute;
+    inline-size:var(--heart); block-size:var(--heart);
+    background:var(--c); border-radius:50%;
   }
-  .heart::before{ top:-35px; left:0; }
-  .heart::after{  top:0;   left:35px; }
+  .heart::before{ top:calc(var(--heart) * -0.5); left:0; }
+  .heart::after{  top:0; left:calc(var(--heart) * 0.5); }
 
   /* Animaciones */
-  .heart-1{ left:20%; animation:osc-l 2.5s ease-in-out infinite; }
-  .heart-2{ left:80%; animation:osc-r 2.5s ease-in-out infinite; }
+  .heart-1{ left:20%; animation:osc-l 2.6s ease-in-out infinite; }
+  .heart-2{ left:80%; animation:osc-r 2.6s ease-in-out infinite; }
   @keyframes osc-l{ 0%{left:20%;} 50%{left:50%;} 100%{left:20%;} }
   @keyframes osc-r{ 0%{left:80%;} 50%{left:50%;} 100%{left:80%;} }
 
-  /* Contornos nítidos */
-  .edges{
-    position:absolute; inset:0; z-index:1; pointer-events:none;
-  }
-  .heart-stroke{
-    position:absolute;
-    width:84px; height:84px;
-    top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    fill:none;
-    stroke-linecap:round; stroke-linejoin:round;
-    stroke-width:3.5;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,.25));
-  }
-  .heart-stroke.heart-1{ stroke: var(--stroke1); }
-  .heart-stroke.heart-2{ stroke: var(--stroke2); }
-
-  /* UI */
+  /* ===== UI ===== */
   .ui{
     position:absolute; inset:0;
     display:flex; align-items:center; justify-content:center;
-    bottom:5%; 
-    z-index:2; text-align:center; padding:0 24px;
+    z-index:2; text-align:center;
+    padding:0 clamp(16px, 4vmin, 28px);
   }
   .title{
     color:var(--text);
     font-weight:700;
-    font-size: clamp(20px, 4vw, 28px);
-    margin:0;
+    font-size: clamp(18px, 3.8vmin, 28px);
+    line-height:1.25; margin:0;
+    max-inline-size:min(75ch, 92vw);
+    text-wrap:balance;
   }
-  .cta{
-    position:absolute; left:50%; bottom:28px;
+
+  /* CTA según modo */
+  .loader-overlay .cta{
+    position:fixed;
+    left:50%;
+    bottom:calc(20px + env(safe-area-inset-bottom, 0px));
     transform:translateX(-50%);
-    width:calc(100% - 64px); max-width:380px;
-    padding:14px 18px; border-radius:16px;
-    border:2px solid var(--text);
-    background:var(--btn-fill);
-    color:var(--text);
-    font-weight:600; line-height:1.2; text-align:center;
+    inline-size:clamp(240px, 82vw, 520px);
+  }
+  .loader-inline .cta{
+    position:absolute;
+    left:50%; bottom:28px; transform:translateX(-50%);
+    inline-size:clamp(240px, 82vw, 520px);
+  }
+
+  .cta{
+    padding:clamp(12px, 2.5vmin, 16px) clamp(14px, 3vmin, 20px);
+    border-radius:16px; border:2px solid var(--text);
+    background:var(--btn-fill); color:var(--text);
+    font-weight:600; line-height:1.25; text-align:center;
     backdrop-filter:saturate(120%) blur(2px);
-    cursor:pointer; text-decoration:none;
+    text-decoration:none; will-change: transform, filter;
   }
   .cta:hover{ filter:brightness(1.05); }
-  .cta:active{ transform:translateX(-50%) scale(0.99); }
+  .cta:active{ transform:translateX(-50%) scale(0.985); }
+
+  /* Landscape bajo */
+  @media (max-height: 540px) {
+    .ui{ padding-bottom:80px; }
+    .title{ font-size: clamp(16px, 3.4vmin, 24px); }
+    .metaballs{ filter: blur(clamp(8px, 2.5vmin, 16px)) contrast(14); }
+  }
+
+  /* Tablet / desktop */
+  @media (min-width: 768px) {
+    .title{ font-size: clamp(22px, 2.4vmin, 32px); }
+    .cta{ inline-size:clamp(300px, 46vw, 560px); }
+  }
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .heart-1, .heart-2 { animation:none; }
+  }
 </style>
