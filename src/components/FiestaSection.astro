@@ -36,7 +36,9 @@ const {
   <header class="text-center text-[color:var(--sepia)]">
     <div class="flex justify-center">
       <div class="flex justify-center border-y border-[#B88358] w-48">
-        <h2 class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]">
+        <h2
+          class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
+        >
           <span
             class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
                    after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
@@ -46,7 +48,9 @@ const {
         </h2>
       </div>
     </div>
-    <p class="mx-auto mt-4 max-w-[36ch] font-italianno text-[#B88358] text-3xl">{intro}</p>
+    <p class="mx-auto mt-4 max-w-[36ch] font-italianno text-[#B88358] text-3xl">
+      {intro}
+    </p>
   </header>
 
   <!-- Tarjetas -->
@@ -169,7 +173,9 @@ const {
   <section class="mt-12 text-center text-[color:var(--sepia)]">
     <div class="flex justify-center">
       <div class="flex justify-center border-y border-[#B88358] w-64">
-        <h3 class="relative inline-block font-italianno text-5xl md:text-6xl text-[#B88358]">
+        <h3
+          class="relative inline-block font-italianno text-5xl md:text-6xl text-[#B88358]"
+        >
           <span
             class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
                    after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
@@ -180,7 +186,9 @@ const {
       </div>
     </div>
 
-    <p class="mx-auto mt-4 max-w-[38ch] font-italianno text-[#B88358] text-3xl">{giftsDesc}</p>
+    <p class="mx-auto mt-4 max-w-[38ch] font-italianno text-[#B88358] text-3xl">
+      {giftsDesc}
+    </p>
 
     <button
       type="button"
@@ -194,13 +202,26 @@ const {
   <!-- ========= Modales ========= -->
 
   <!-- Modal: Dress code (scroll interno + tabs Hombre/Mujer) -->
-  <div id="modal-dress" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-dress-title">
-    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
-    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-3xl rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+  <div
+    id="modal-dress"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-dress-title"
+  >
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm">
+    </div>
+    <div
+      class="modal-panel relative z-10 mx-auto w-[92vw] max-w-3xl rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto"
+    >
       <div class="flex items-start justify-between gap-4">
-        <h4 id="modal-dress-title" class="font-italianno text-4xl">Dress code</h4>
-        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
-                data-close-modal>Cerrar</button>
+        <h4 id="modal-dress-title" class="font-italianno text-4xl">
+          Dress code
+        </h4>
+        <button
+          class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+          data-close-modal>Cerrar</button
+        >
       </div>
 
       <div class="mt-4 space-y-3">
@@ -214,7 +235,9 @@ const {
 
         <!-- Selector Hombre / Mujer -->
         <div class="mt-5">
-          <div class="inline-flex gap-2 rounded-xl border border-[color:var(--accent)]/60 bg-white/40 p-1">
+          <div
+            class="inline-flex gap-2 rounded-xl border border-[color:var(--accent)]/60 bg-white/40 p-1"
+          >
             <button
               type="button"
               class="tab-btn rounded-lg px-3 py-1 text-sm font-semibold hover:bg-white/70 transition bg-white"
@@ -236,45 +259,313 @@ const {
           </div>
 
           <!-- Panel: Hombres -->
-          <div class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3" data-panel-group="dress" data-panel="men">
-            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?man,suit" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?man,suit" alt="Hombre con traje formal" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+          <!-- <div
+            class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3"
+            data-panel-group="dress"
+            data-panel="men"
+          >
+            <figure
+              class="overflow-hidden rounded-xl border border-[#B88358]/20 group"
+            >
+              <a
+                href="https://source.unsplash.com/1200x1600/?man,suit"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block"
+              >
+                <img
+                  src="https://source.unsplash.com/600x800/?man,suit"
+                  alt="Hombre con traje formal"
+                  class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
               </a>
-              <figcaption class="px-2 py-1 text-xs text-center">Traje formal</figcaption>
+              <figcaption class="px-2 py-1 text-xs text-center">
+                Traje formal
+              </figcaption>
             </figure>
-            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?tuxedo,man" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?tuxedo,man" alt="Esmoquin" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+            <figure
+              class="overflow-hidden rounded-xl border border-[#B88358]/20 group"
+            >
+              <a
+                href="https://source.unsplash.com/1200x1600/?tuxedo,man"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block"
+              >
+                <img
+                  src="https://source.unsplash.com/600x800/?tuxedo,man"
+                  alt="Esmoquin"
+                  class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
               </a>
-              <figcaption class="px-2 py-1 text-xs text-center">Esmoquin</figcaption>
+              <figcaption class="px-2 py-1 text-xs text-center">
+                Esmoquin
+              </figcaption>
             </figure>
-            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?menswear,blazer" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?menswear,blazer" alt="Blazer + camisa" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+            <figure
+              class="overflow-hidden rounded-xl border border-[#B88358]/20 group"
+            >
+              <a
+                href="https://source.unsplash.com/1200x1600/?menswear,blazer"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block"
+              >
+                <img
+                  src="https://source.unsplash.com/600x800/?menswear,blazer"
+                  alt="Blazer + camisa"
+                  class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
               </a>
-              <figcaption class="px-2 py-1 text-xs text-center">Blazer + camisa</figcaption>
+              <figcaption class="px-2 py-1 text-xs text-center">
+                Blazer + camisa
+              </figcaption>
             </figure>
-            <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?dress-shoes,men" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?dress-shoes,men" alt="Zapatos de vestir" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+            <figure
+              class="overflow-hidden rounded-xl border border-[#B88358]/20 group"
+            >
+              <a
+                href="https://source.unsplash.com/1200x1600/?dress-shoes,men"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block"
+              >
+                <img
+                  src="https://source.unsplash.com/600x800/?dress-shoes,men"
+                  alt="Zapatos de vestir"
+                  class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
               </a>
-              <figcaption class="px-2 py-1 text-xs text-center">Zapatos de vestir</figcaption>
+              <figcaption class="px-2 py-1 text-xs text-center">
+                Zapatos de vestir
+              </figcaption>
             </figure>
+          </div> 
+          
+          https://co.pinterest.com/pin/343962490311838855/
+          https://co.pinterest.com/pin/185703184631669790/-->
+          <div class="tab-panel mt-4" data-panel-group="dress" data-panel="men">
+            <!-- COLLAGE con stacking fijo -->
+            <div class="relative">
+              <!-- Fila 1: ENCIMA -->
+              <div
+                class="relative z-20 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 1"
+              >
+                <!-- … tus <figure> de la fila 1 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/15/15/22/1515224bf6e2107daa5101199883b74c.png"
+                    alt="Vestidos naranja"
+                    class="h-48 md:h-56 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[-2deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/5d/29/3b/5d293b4ddb668f35e333cf12bae8577c.png"
+                    alt="Vestidos azules"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/24/32/ff/2432ffad1ac926b72018aadb9b7d70d1.png"
+                    alt="Vestidos verdes"
+                    class="h-48 md:h-56 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[-1deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/bb/55/65/bb55659903d037ae67e9d704c9691c59.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/98/c0/cd/98c0cd28ffbcf31cf1ba3c25630efa06.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/3a/ce/6a/3ace6ab0e482784c7e0e22526ae95a3a.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+
+              <!-- Fila 2: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 mr-6 group">
+                  <img
+                    src="https://i.pinimg.com/originals/ef/b6/47/efb647bf094120ffa303be521f80aab4.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/2f/b2/04/2fb2040f99bf862a378e15040834e447.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/01/87/14/018714e52fb44c117ff818208f015bfd.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/8e/63/55/8e63552d953502cc4b18755aa0adc838.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/98/a9/3e/98a93e0d70ab196de82e26ec4cf6dfc4.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/34/78/bf/3478bf5dea60c435ac78bfcf803a957e.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+              <!-- Fila 3: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/c3/d6/4a/c3d64a202c7849117e3efbcaf2d4c51c.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/3b/79/01/3b7901af7434e85c3480e0534f78ba87.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/5d/26/36/5d2636f9f02e5b55f05769823caa5489.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/64/c4/e3/64c4e340846ed389266c72842703b584.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-14 group">
+                  <img
+                    src="https://i.pinimg.com/originals/c2/a8/3d/c2a83dcbb76220b495f47e6ac7598e68.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/b7/ac/cf/b7accfe38f290bf5eaf9f7bc12d12992.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+              <!-- Fila 4: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/aa/81/ca/aa81ca45a884f46ff4ccc9c86228d712.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/f9/b1/08/f9b10887b11893c029d48030b2186b9a.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/4c/df/da/4cdfda746c59eb87f8e8057a1bd4b07f.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/7d/5f/0a/7d5f0ae1113b060df9b71cf940152ea1.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                 <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/ae/07/31/ae07318745236e446a13fe1250b7b622.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+            </div>
           </div>
 
           <!-- Panel: Mujeres -->
-          <div class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 hidden" data-panel-group="dress" data-panel="women">
+          <!-- <div class="tab-panel mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 hidden bg-red-700" data-panel-group="dress" data-panel="women">
             <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?woman,evening-gown" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?woman,evening-gown" alt="Vestido de noche" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
+              <a href="https://drive.google.com/file/d/1oJpLEGuGO3nL2lHGe6_AeHUbhA1p6HdA/view?usp=sharinge.unsplash.com/1200x1600/?woman,evening-gown" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://i.pinimg.com/originals/93/d8/ad/93d8adbfe06eded6b1e244ed383cc437.png" alt="Vestido de noche" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
               </a>
               <figcaption class="px-2 py-1 text-xs text-center">Vestido de noche</figcaption>
             </figure>
             <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
-              <a href="https://source.unsplash.com/1200x1600/?woman,cocktail-dress" target="_blank" rel="noopener noreferrer" class="block">
-                <img src="https://source.unsplash.com/600x800/?woman,cocktail-dress" alt="Vestido cóctel elegante" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
-              </a>
+              <a href="https://drive.google.com/file/d/1oJpLEGuGO3nL2lHGe6_AeHUbhA1p6HdA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="block">
+                <img src="https://drive.google.com/file/d/1oJpLEGuGO3nL2lHGe6_AeHUbhA1p6HdA/view?usp=sharinge.unsplash.com/1200x1600/?woman,evening-gown" alt="Vestido cóctel elegante" class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
               <figcaption class="px-2 py-1 text-xs text-center">Cóctel elegante</figcaption>
             </figure>
             <figure class="overflow-hidden rounded-xl border border-[#B88358]/20 group">
@@ -289,30 +580,291 @@ const {
               </a>
               <figcaption class="px-2 py-1 text-xs text-center">Accesorios</figcaption>
             </figure>
+          </div> -->
+          <div
+            class="tab-panel mt-4 hidden"
+            data-panel-group="dress"
+            data-panel="women"
+          >
+            <!-- COLLAGE con stacking fijo -->
+            <div class="relative">
+              <!-- Fila 1: ENCIMA -->
+              <div
+                class="relative z-20 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 1"
+              >
+                <!-- … tus <figure> de la fila 1 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-18 group">
+                  <img
+                    src="https://i.pinimg.com/originals/93/d8/ad/93d8adbfe06eded6b1e244ed383cc437.png"
+                    alt="Vestidos naranja"
+                    class="h-48 md:h-56 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[-2deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-18 group">
+                  <img
+                    src="https://i.pinimg.com/originals/90/e8/27/90e8273d98991cee9a3c97dd1162056b.png"
+                    alt="Vestidos azules"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/9a/8a/6f/9a8a6feae6ad800e59a75597b9f8ec63.png"
+                    alt="Vestidos verdes"
+                    class="h-48 md:h-56 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[-1deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/f1/37/e8/f137e819256d6053fc52a473314c016c.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/fb/f2/65/fbf265ef77e382f126b0eebcf526a03f.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/45/67/53/456753ba8c0c00f6f102c8bb3cb4a94e.png"
+                    alt="Vestidos rosados"
+                    class="h-52 md:h-60 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1.5deg]"
+                    loading="lazy"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+
+              <!-- Fila 2: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 mr-6 group">
+                  <img
+                    src="https://i.pinimg.com/originals/ef/fa/82/effa82ccd26c67353bbb45e989cee746.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/3e/7c/a9/3e7ca925402d7aebeb6186d2a806a39c.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/80/dd/12/80dd12f3a4e760c0629cf726612f46e6.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/df/38/87/df388722ee6e5f649e2fba5a7ce6de0c.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/46/85/fc/4685fc267ed1f84b8043ff3dab660731.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/b0/22/a4/b022a446c9c91af0adc5b711f8d8abf6.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/40/2a/c8/402ac80995b9cd4dbbe69d3438d0b8cc.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+              <!-- Fila 3: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/b7/5c/d5/b75cd566ae6be8cfbe4df23c8d6e5466.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/7d/cb/df/7dcbdf443b2568089ef80bc988a20dde.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/80/e5/3b/80e53bd9d386e36b456a41af37884821.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/e3/56/26/e35626f5178c16f2de29ffed08abd4f7.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/22/b1/73/22b173b3de6b9fcf0bb09a4024f449b3.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/b3/7a/3c/b37a3cd3fb20215b439e2904e8db62c7.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/13/b2/bf/13b2bf56104d94faa71ef918540de643.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+              <!-- Fila 4: DEBAJO (y un pelín metida) -->
+              <div
+                class="relative z-10 -mt-4 md:-mt-5 flex flex-nowrap items-end overflow-x-auto overscroll-x-contain gap-0 px-1 py-2"
+                aria-label="Collage vestidos fila 2"
+              >
+                <!-- … tus <figure> de la fila 2 (iguales que antes) … -->
+                <figure class="relative shrink-0 first:ml-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/29/b9/a3/29b9a3f8e93fc7a1445c3c9d22fc3734.png"
+                    alt="Vestidos rosados"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[1deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/8c/3c/f8/8c3cf822eb02afa795b48a317131d3f2.png"
+                    alt="Vestidos verdes"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-1"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/51/ac/84/51ac84509c06dfb3f1ce124d12530a62.png"
+                    alt="Vestidos azules"
+                    class="h-44 md:h-52 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 rotate-[2deg]"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/11/a6/1d/11a61d5423721fb90f0036076ced900b.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/95/0f/33/950f3368341a0817cf5570cb237c2bc7.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/0b/35/c2/0b35c2ecc1b7dd15ea612d1602688688.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/85/dc/94/85dc94d5a4ec11439241b7be06fe855d.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <figure class="relative shrink-0 -ml-8 group">
+                  <img
+                    src="https://i.pinimg.com/originals/aa/2c/ec/aa2cece8b47b527a5f969ecc1612134f.png"
+                    alt="Vestidos naranja"
+                    class="h-50 md:h-58 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105 -rotate-2"
+                  />
+                </figure>
+                <!-- … (repeticiones que ya tenías) … -->
+              </div>
+            </div>
           </div>
         </div>
 
         <p class="text-xs opacity-70 mt-3">
-          Las imágenes se cargan desde Internet (Unsplash) y pueden variar en cada visita. Puedes reemplazar las URLs por tus fotos preferidas.
+          Las imágenes se cargan desde Internet (Unsplash) y pueden variar en
+          cada visita. Puedes reemplazar las URLs por tus fotos preferidas.
         </p>
       </div>
     </div>
   </div>
 
   <!-- Modal: Restricciones -->
-  <div id="modal-rules" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-rules-title">
-    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
-    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+  <div
+    id="modal-rules"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-rules-title"
+  >
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm">
+    </div>
+    <div
+      class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto"
+    >
       <div class="flex items-start justify-between gap-4">
-        <h4 id="modal-rules-title" class="font-italianno text-4xl">Restricciones</h4>
-        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
-                data-close-modal>Cerrar</button>
+        <h4 id="modal-rules-title" class="font-italianno text-4xl">
+          Restricciones
+        </h4>
+        <button
+          class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+          data-close-modal>Cerrar</button
+        >
       </div>
 
       <div class="mt-4 space-y-3">
         <ul class="list-disc pl-6 space-y-1">
           <li>Recepción <strong>solo para adultos</strong>.</li>
-          <li>La invitación aplica únicamente para las personas indicadas en el enlace.</li>
+          <li>
+            La invitación aplica únicamente para las personas indicadas en el
+            enlace.
+          </li>
           <li>No se permite ingresar con bebidas.</li>
           <li>Horario límite de ingreso: 5:00 p. m.</li>
         </ul>
@@ -321,62 +873,173 @@ const {
   </div>
 
   <!-- Modal: Lluvia de sobres -->
-  <div id="modal-gifts" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-gifts-title">
-    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
-    <div class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto">
+  <div
+    id="modal-gifts"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-gifts-title"
+  >
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm">
+    </div>
+    <div
+      class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto"
+    >
       <div class="flex items-start justify-between gap-4">
-        <h4 id="modal-gifts-title" class="font-italianno text-4xl">{giftsTitle}</h4>
-        <button class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
-                data-close-modal>Cerrar</button>
+        <h4 id="modal-gifts-title" class="font-italianno text-4xl">
+          {giftsTitle}
+        </h4>
+        <button
+          class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+          data-close-modal>Cerrar</button
+        >
       </div>
 
       <div class="mt-4 space-y-3">
-        <p>Tu presencia es nuestro mejor regalo. Si deseas hacernos un detalle:</p>
+        <p>
+          Tu presencia es nuestro mejor regalo. Si deseas hacernos un detalle:
+        </p>
         <ul class="list-disc pl-6 space-y-1">
           <li><strong>Sobre</strong> en la recepción.</li>
-          <li><strong>Transferencia</strong>: Banco Ejemplo — CTA: 000-000000 — Titular: Ana Pérez.</li>
+          <li>
+            <strong>Transferencia</strong>: Banco Ejemplo — CTA: 000-000000 —
+            Titular: Ana Pérez.
+          </li>
           <li><strong>Nequi/Daviplata</strong>: 300 000 0000 (Carlos).</li>
         </ul>
       </div>
     </div>
   </div>
 
+  <div
+    id="dress-lightbox"
+    class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-sm"
+  >
+    <!-- Botón cerrar -->
+    <button
+      id="dress-lightbox-close"
+      class="absolute top-4 right-4 rounded-full p-2 bg-white/10 hover:bg-white/20 text-white/90"
+      aria-label="Cerrar"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M6.225 4.811 4.81 6.225 9.586 11l-4.775 4.775 1.414 1.414L11 12.414l4.775 4.775 1.414-1.414L12.414 11l4.775-4.775-1.414-1.414L11 9.586 6.225 4.811z"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Contenido centrado -->
+    <div class="h-full w-full flex items-center justify-center p-4">
+      <img
+        id="dress-lightbox-img"
+        src=""
+        alt=""
+        draggable="false"
+        class="max-h-[90vh] max-w-[92vw] object-contain rounded-lg shadow-2xl cursor-zoom-out"
+      />
+    </div>
+  </div>
+
+  <!-- LIGHTBOX HOMBRES -->
+  <div
+    id="dress-men-lightbox"
+    class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-sm"
+  >
+    <!-- Botón cerrar -->
+    <button
+      id="dress-men-lightbox-close"
+      class="absolute top-4 right-4 rounded-full p-2 bg-white/10 hover:bg-white/20 text-white/90"
+      aria-label="Cerrar"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M6.225 4.811 4.81 6.225 9.586 11l-4.775 4.775 1.414 1.414L11 12.414l4.775 4.775 1.414-1.414L12.414 11l4.775-4.775-1.414-1.414L11 9.586 6.225 4.811z"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Contenido centrado -->
+    <div class="h-full w-full flex items-center justify-center p-4">
+      <img
+        id="dress-men-lightbox-img"
+        src=""
+        alt=""
+        draggable="false"
+        class="max-h-[90vh] max-w-[92vw] object-contain rounded-lg shadow-2xl cursor-zoom-out"
+      />
+    </div>
+  </div>
+  s
+
   <!-- Estilos/animación simples -->
   <style>
-    .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; }
-    .modal.hidden { display: none; }
-    .modal .modal-backdrop { opacity: 0; transition: opacity .2s ease; }
-    .modal .modal-panel { transform: translateY(8px); opacity: 0; transition: transform .2s ease, opacity .2s ease; }
-    .modal[data-open="true"] .modal-backdrop { opacity: 1; }
-    .modal[data-open="true"] .modal-panel { opacity: 1; transform: translateY(0); }
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+    }
+    .modal.hidden {
+      display: none;
+    }
+    .modal .modal-backdrop {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .modal .modal-panel {
+      transform: translateY(8px);
+      opacity: 0;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+    .modal[data-open="true"] .modal-backdrop {
+      opacity: 1;
+    }
+    .modal[data-open="true"] .modal-panel {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <!-- JS inline: abrir/cerrar + tabs -->
   <script is:inline>
     (function () {
-      const openers = document.querySelectorAll('[data-open-modal]');
-      const CLOSE_ATTR = 'data-close-modal';
+      const openers = document.querySelectorAll("[data-open-modal]");
+      const CLOSE_ATTR = "data-close-modal";
 
       function lockScroll() {
         const y = window.scrollY;
         document.body.dataset.scrollY = String(y);
         document.body.style.top = `-${y}px`;
-        document.body.classList.add('overflow-hidden');
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
+        document.body.classList.add("overflow-hidden");
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
       }
 
       function unlockScroll() {
-        const y = parseInt(document.body.dataset.scrollY || '0', 10);
-        document.body.classList.remove('overflow-hidden');
-        document.body.style.top = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
+        const y = parseInt(document.body.dataset.scrollY || "0", 10);
+        document.body.classList.remove("overflow-hidden");
+        document.body.style.top = "";
+        document.body.style.position = "";
+        document.body.style.width = "";
         window.scrollTo(0, y);
       }
 
       function focusFirst(el) {
-        const sel = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
+        const sel =
+          'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
         const first = el.querySelector(sel);
         if (first) first.focus();
       }
@@ -384,68 +1047,163 @@ const {
       function openModal(id) {
         const modal = document.getElementById(id);
         if (!modal) return;
-        modal.classList.remove('hidden');
+        modal.classList.remove("hidden");
         requestAnimationFrame(() => {
-          modal.setAttribute('data-open', 'true');
+          modal.setAttribute("data-open", "true");
         });
         lockScroll();
         focusFirst(modal);
       }
 
       function closeModal(modal) {
-        modal.removeAttribute('data-open');
-        setTimeout(() => modal.classList.add('hidden'), 200);
+        modal.removeAttribute("data-open");
+        setTimeout(() => modal.classList.add("hidden"), 200);
         unlockScroll();
       }
 
-      openers.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id = btn.getAttribute('data-open-modal');
+      openers.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-open-modal");
           if (id) openModal(id);
         });
       });
 
-      document.addEventListener('click', (ev) => {
+      document.addEventListener("click", (ev) => {
         // Cerrar
-        const closeBtn = ev.target.closest('[' + CLOSE_ATTR + ']');
+        const closeBtn = ev.target.closest("[" + CLOSE_ATTR + "]");
         if (closeBtn) {
-          const modal = closeBtn.closest('.modal');
+          const modal = closeBtn.closest(".modal");
           if (modal) closeModal(modal);
           return;
         }
-        const backdrop = ev.target.classList && ev.target.classList.contains('modal-backdrop');
+        const backdrop =
+          ev.target.classList && ev.target.classList.contains("modal-backdrop");
         if (backdrop) {
-          const modal = ev.target.closest('.modal');
+          const modal = ev.target.closest(".modal");
           if (modal) closeModal(modal);
           return;
         }
 
         // Tabs (Hombre/Mujer)
-        const tabBtn = ev.target.closest('[data-tab][data-tab-group]');
+        const tabBtn = ev.target.closest("[data-tab][data-tab-group]");
         if (tabBtn) {
-          const group = tabBtn.getAttribute('data-tab-group');
-          const value = tabBtn.getAttribute('data-tab');
-          const scope = tabBtn.closest('.modal') || document;
+          const group = tabBtn.getAttribute("data-tab-group");
+          const value = tabBtn.getAttribute("data-tab");
+          const scope = tabBtn.closest(".modal") || document;
 
           // Toggle buttons
-          scope.querySelectorAll('.tab-btn[data-tab-group="' + group + '"]').forEach(b => {
-            const active = b.getAttribute('data-tab') === value;
-            b.setAttribute('aria-selected', active ? 'true' : 'false');
-            b.classList.toggle('bg-white', active);
-          });
+          scope
+            .querySelectorAll('.tab-btn[data-tab-group="' + group + '"]')
+            .forEach((b) => {
+              const active = b.getAttribute("data-tab") === value;
+              b.setAttribute("aria-selected", active ? "true" : "false");
+              b.classList.toggle("bg-white", active);
+            });
 
           // Toggle panels
-          scope.querySelectorAll('.tab-panel[data-panel-group="' + group + '"]').forEach(p => {
-            const show = p.getAttribute('data-panel') === value;
-            p.classList.toggle('hidden', !show);
-          });
+          scope
+            .querySelectorAll('.tab-panel[data-panel-group="' + group + '"]')
+            .forEach((p) => {
+              const show = p.getAttribute("data-panel") === value;
+              p.classList.toggle("hidden", !show);
+            });
         }
       });
 
-      document.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Escape') {
+      document.addEventListener("keydown", (ev) => {
+        if (ev.key === "Escape") {
           const open = document.querySelector('.modal[data-open="true"]');
           if (open) closeModal(open);
+        }
+      });
+    })();
+    (function () {
+      // Panel del collage (solo mujeres en dress)
+      var panel = document.querySelector(
+        '[data-panel-group="dress"][data-panel="women"]'
+      );
+      if (!panel) return;
+
+      var overlay = document.getElementById("dress-lightbox");
+      var overlayImg = document.getElementById("dress-lightbox-img");
+      var btnClose = document.getElementById("dress-lightbox-close");
+
+      // Todas las imágenes del collage dentro del panel
+      var imgs = panel.querySelectorAll("figure img");
+      imgs.forEach(function (img) {
+        img.classList.add("cursor-zoom-in");
+        img.addEventListener("click", function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt || "";
+          overlay.classList.remove("hidden");
+          // Bloquear scroll del documento
+          document.documentElement.style.overflow = "hidden";
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.add("hidden");
+        overlayImg.src = "";
+        document.documentElement.style.overflow = "";
+      }
+
+      // Cerrar con botón
+      btnClose.addEventListener("click", closeLightbox);
+
+      // Cerrar al hacer click en el fondo oscuro (no en la imagen)
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) closeLightbox();
+      });
+
+      // Cerrar con ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+          closeLightbox();
+        }
+      });
+    })();
+    (function () {
+      // Panel del collage de HOMBRES
+      var menPanel = document.querySelector(
+        '[data-panel-group="dress"][data-panel="men"]'
+      );
+      if (!menPanel) return;
+
+      var overlay = document.getElementById("dress-men-lightbox");
+      var overlayImg = document.getElementById("dress-men-lightbox-img");
+      var btnClose = document.getElementById("dress-men-lightbox-close");
+
+      // Todas las imágenes clicables dentro del panel
+      var imgs = menPanel.querySelectorAll("figure img");
+      imgs.forEach(function (img) {
+        img.classList.add("cursor-zoom-in");
+        img.addEventListener("click", function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt || "";
+          overlay.classList.remove("hidden");
+          // bloquear scroll del documento mientras está abierto
+          document.documentElement.style.overflow = "hidden";
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.add("hidden");
+        overlayImg.src = "";
+        document.documentElement.style.overflow = "";
+      }
+
+      // Cerrar con botón
+      btnClose.addEventListener("click", closeLightbox);
+
+      // Cerrar al hacer click en el fondo (no en la imagen)
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) closeLightbox();
+      });
+
+      // Cerrar con ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+          closeLightbox();
         }
       });
     })();

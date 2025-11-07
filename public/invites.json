@@ -1,4 +1,20 @@
 [
-  { "id": "x7q3p9", "names": ["Martin Stephan", "Ralf Lorenz"], "seats": 2, "email": "pablo@example.com", "group_id": "G-001" },
-  { "id": "m2k8f1", "names": ["María López"], "seats": 1, "email": "maria@example.com", "group_id": "G-002" }
+  { "id": "silgar-241", "names": ["Silvia García"], "seats": 1, "email": "", "group_id": "G-241" },
+  { "id": "marart-386", "names": ["Mariana Arteaga"], "seats": 1, "email": "", "group_id": "G-386" },
+  { "id": "sanesc-572", "names": ["Santiago Escobar"], "seats": 1, "email": "", "group_id": "G-572" },
+  { "id": "natsal-609", "names": ["Nathalia Salazar"], "seats": 1, "email": "", "group_id": "G-609" },
+  { "id": "felpar-734", "names": ["Felipe Parra"], "seats": 1, "email": "", "group_id": "G-734" },
+  { "id": "jullon-815", "names": ["Juliana Londoño"], "seats": 1, "email": "", "group_id": "G-815" },
+  { "id": "riccam-902", "names": ["Ricardo Camilo"], "seats": 1, "email": "", "group_id": "G-902" },
+  { "id": "jescif-118", "names": ["Jesús Leonardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-118" },
+  { "id": "joscif-263", "names": ["José Eduardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-263" },
+  { "id": "marcif-447", "names": ["María Isabel Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-447" },
+  { "id": "bracas-531", "names": ["Brayan Alexis Castro"], "seats": 1, "email": "", "group_id": "G-531" },
+  { "id": "jonram-678", "names": ["Jonathan Ramos"], "seats": 1, "email": "", "group_id": "G-678" },
+  { "id": "jerrod-741", "names": ["Jefferson Rodríguez"], "seats": 1, "email": "", "group_id": "G-741" },
+  { "id": "carpul-742", "names": ["Carlos Andrés Pulido"], "seats": 1, "email": "", "group_id": "G-742" },
+  { "id": "benram-889", "names": ["Benjamín Ramos Rodríguez"], "seats": 1, "email": "", "group_id": "G-889" },
+  { "id": "cesgem-312", "names": ["César García Urriago", "Gema Lucia Camero"],"seats": 2, "email": "", "group_id": "G-312" },
+  { "id": "guapau-457", "names": ["Guacho", "Paulina García Camelo"], "seats": 2, "email": "", "group_id": "G-457" }
+
 ]
