@@ -6,10 +6,22 @@ interface Props {
   venueTitle?: string; // "Lugar"
   venueName: string; // "Amazilia Hotel"
   venueAddress?: string; // "Vía Pereira a Cerritos..."
-  rsvpHref?: string; // Link a WhatsApp/Google Form/Email
+  rsvpHref?: string; // solo lo usamos como flag para mostrar el botón
   mapsHref?: string; // Link a Google Maps
+  guests?: string[];     // nombres de los invitados en esta invitación (opcional)
+  inviteCode?: string;   // código único de invitación (opcional)
   class?: string;
 }
+
+/** Datos dinámicos por invitación (puedes generarlos desde tu backend o build) */
+const rsvp = {
+  groupId:  '',
+  inviteId: '',
+  names:    [''], // 1 o más
+  waPhone:  '573204609701', // número destino WhatsApp (sin +)
+};
+
+const waIntro = `Hola, ya diligencié el formulario de asistencia.`;
 
 const {
   title = "Boda",
@@ -20,6 +32,8 @@ const {
   venueAddress = "",
   rsvpHref,
   mapsHref,
+  guests = [],
+  inviteCode = "",
   class: extra = "",
 } = Astro.props;
 ---
@@ -33,7 +47,8 @@ const {
   >
     <!-- Ícono de anillos -->
     <div class="flex justify-center mb-4 md:mb-6 w-full text-[color:var(--sepia)]">
-      <svg
+      <!-- SVG de anillos si quieres -->
+       <svg
         class=""
         width="126"
         height="126"
@@ -64,60 +79,60 @@ const {
     </div>
 
     <!-- Título -->
-     <div class="flex justify-center ">
-        <div class="flex justify-center border-y border-[#B88358] w-48">
-          <h2
-            id="guests-title"
-            class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
+    <div class="flex justify-center ">
+      <div class="flex justify-center border-y border-[#B88358] w-48">
+        <h2
+          id="guests-title"
+          class="relative inline-block font-italianno text-6xl md:text-4xl text-[#B88358]"
+        >
+          <span
+            class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
+               after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
           >
-            <span
-              class="before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:block before:h-px before:w-40 before:bg-[color:var(--accent)/.7]
-                 after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:block after:h-px after:w-40 after:bg-[color:var(--accent)/.7]"
-            >
-              {title}
-            </span>
-          </h2>
-        </div>
+            {title}
+          </span>
+        </h2>
       </div>
-    <!-- <div class="mx-auto my-2 h-px w-40 md:w-56 bg-[color:var(--sepia)]/50">
     </div>
-
-    <h3 class="font-italianno text-4xl md:text-5xl mb-2">{title}</h3>
-    <div class="mx-auto my-2 h-px w-40 md:w-56 bg-[color:var(--sepia)]/50">
-    </div> -->
 
     <!-- Layout: móvil en columna / escritorio en dos columnas -->
     <div class="mt-6 grid gap-8 md:grid-cols-2 md:gap-10">
       <!-- Columna: Día -->
       <div>
         <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">Día</h4>
-        <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine1}</p>
+        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine1}</p>
         {
           dateLine2 && (
-            <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine2}</p>
+            <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine2}</p>
           )
         }
 
         {
           rsvpHref && (
-            <a
-              href={rsvpHref}
-              target="_blank"
-              rel="noopener"
-              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477]  hover:bg-[color:var(--sepia)]/15 transition"
+            <button
+              type="button"
+              data-open-modal="modal-rsvp"
+              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477] hover:bg-[color:var(--sepia)]/15 transition"
               aria-label="Confirmar asistencia"
             >
               Confirmar Asistencia
-            </a>
+            </button>
           )
         }
+        <div class="mt-2 text-[#B89477]">
+          <p class="underline">Es importante confirmar asistencia antes del 16 de enero de 2026.</p>
+        </div>
       </div>
 
       <!-- Columna: Lugar -->
       <div>
         <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">{venueTitle}</h4>
-        <p class="font-italianno  text-3xl md:text-lg opacity-90 text-[#B88358]">{venueName}</p>
-        {venueAddress && <p class="font-italianno  text-2xl md:text-lg opacity-90 text-[#B88358]">{venueAddress}</p>}
+        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{venueName}</p>
+        {venueAddress && (
+          <p class="font-italianno text-2xl md:text-lg opacity-90 text-[#B88358]">
+            {venueAddress}
+          </p>
+        )}
 
         {
           mapsHref && (
@@ -125,7 +140,7 @@ const {
               href={mapsHref}
               target="_blank"
               rel="noopener"
-              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477]  hover:bg-[color:var(--sepia)]/15 transition"
+              class="h-10 py-2 w-48 mt-5 inline-block font-medium rounded-2xl bg-[#E6DDC0] text-[#B89477] hover:bg-[color:var(--sepia)]/15 transition"
               aria-label="Cómo llegar"
             >
               Cómo llegar
@@ -136,3 +151,348 @@ const {
     </div>
   </div>
 </section>
+
+<!-- Modal: RSVP -->
+<div
+  id="modal-rsvp"
+  class="modal fixed inset-0 z-50 hidden grid place-items-center"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-rsvp-title"
+  style="--cream:#FBF4E8; --sepia:#8B6B5E; --accent:#D8C5A8;"
+>
+  <!-- Fondo oscuro -->
+  <div
+    class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"
+    data-close-modal
+  ></div>
+
+  <!-- Panel (mismo patrón que dress/rules/gifts) -->
+  <div
+    class="modal-panel relative z-10 mx-auto w-[92vw] max-w-lg rounded-2xl bg-[color:var(--cream)] p-6 text-[color:var(--sepia)] shadow-2xl max-h-[85vh] overflow-y-auto"
+  >
+    <div class="flex items-start justify-between gap-4">
+      <h4 id="modal-rsvp-title" class="font-italianno text-4xl">
+        Confirmar asistencia
+      </h4>
+      <button
+        class="rounded-md border border-[color:var(--accent)]/60 px-3 py-1 text-sm font-semibold hover:bg-white/60"
+        data-close-modal
+      >
+        Cerrar
+      </button>
+    </div>
+
+    <div class="mt-2">
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Diligencia el formulario de asistencia indicando, para cada persona incluida en la invitación, si asistirá o no.</li>
+        <li>
+          Al presionar el botón de enviar, se abrirá WhatsApp con un mensaje ya escrito con tu información. 
+          Solo debes tocar “Enviar” para confirmar tu asistencia.
+        </li>
+      </ul>
+    </div>
+
+    <form
+      id="rsvpForm"
+      class="mt-4 space-y-4"
+      data-wa-phone="573204609701"
+    >
+      <!-- Lista de personas: se rellena desde invites.json -->
+      <div id="rsvp-persons" class="space-y-3"></div>
+
+
+      <div class="pt-2 flex justify-end gap-2">
+        <button
+          type="button"
+          data-close-modal
+          class="rounded-lg border border-[color:var(--accent)]/60 px-4 py-2 hover:bg-white/60"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white hover:bg-emerald-700"
+        >
+          Enviar y abrir WhatsApp
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Script: Supabase + modal + WhatsApp -->
+<script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+  // 🔢 Config
+  const MIN_LOADER_MS = 2000;
+  const WA_PHONE = "573204609701"; // número donde recibes los mensajes
+
+  // ⚙️ Supabase
+  const SUPABASE_URL = "https://dxeqhovymralzfnqrjjg.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4ZXFob3Z5bXJhbHpmbnFyampnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MzMwODQ0NiwiZXhwIjoyMDc4ODg0NDQ2fQ._riEe0g_ShV8Z4STHUbjBa_NwviLWkONz1VxUQyKz2I";
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const waIntro = "Hola, ya diligencié el formulario de asistencia.";
+
+  // Estado actual de la invitación cargada
+  // { id, names (array), seats, email, group_id }
+  let currentInvite = null;
+
+  // Helpers
+  function delay(ms) {
+    return new Promise((r) => setTimeout(r, ms));
+  }
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  // Pinta los nombres y sillas en el diseño principal
+  function renderGuests(names, seats) {
+    const seatsCircle = $("guest-seats-circle");
+    const namesList = $("guest-names-list");
+
+    // Compatibilidad con IDs antiguos (si existen)
+    const legacyNames = $("guest-names");
+    const legacySeats = $("guest-seats");
+
+    if (seatsCircle) seatsCircle.textContent = String(seats ?? 1);
+    if (legacySeats) legacySeats.textContent = String(seats ?? 1);
+
+    if (namesList) {
+      namesList.innerHTML = "";
+      names.forEach((n) => {
+        const li = document.createElement("li");
+        li.className =
+          "mx-auto w-[18rem] md:w-[22rem] rounded-xl px-6 py-2 bg-[#E6DDC0] text-[#B88358] font-italianno text-3xl";
+        li.textContent = n;
+        namesList.appendChild(li);
+      });
+    }
+
+    if (legacyNames) {
+      legacyNames.textContent = names.join(" & ");
+    }
+  }
+
+  // Pinta los invitados en la modal de RSVP usando currentInvite
+  function renderRsvpFromInvite() {
+    if (!currentInvite) return;
+
+    const form = document.getElementById("rsvpForm");
+    const container = document.getElementById("rsvp-persons");
+    if (!form || !container) return;
+
+    // group_id e invite_id vienen del JSON
+    form.dataset.groupId = currentInvite.group_id || currentInvite.id || "";
+    form.dataset.inviteId = currentInvite.id || "";
+
+    container.innerHTML = "";
+
+    currentInvite.names.forEach((n, index) => {
+      const row = document.createElement("div");
+      row.className = "grid grid-cols-[1fr_auto_auto] items-center gap-3";
+      row.dataset.personIndex = String(index);
+
+      row.innerHTML = `
+        <span class="text-[#B88358]">${n}</span>
+        <label class="inline-flex items-center gap-1">
+          <input type="radio" name="ans-${index}" value="yes" required class="accent-emerald-600" />
+          <span>Asiste</span>
+        </label>
+        <label class="inline-flex items-center gap-1">
+          <input type="radio" name="ans-${index}" value="no" class="accent-rose-600" />
+          <span>No asiste</span>
+        </label>
+      `;
+
+      container.appendChild(row);
+    });
+  }
+
+  async function loadInvite() {
+    const loaderEl = $("loader");
+    const contentEl = $("invite-content");
+    const errEl = $("guest-error");
+    const loaderLabel = loaderEl ? loaderEl.querySelector(".title") : null;
+
+    // Estado inicial
+    if (loaderEl) loaderEl.classList.remove("hidden");
+    if (contentEl) contentEl.classList.add("hidden", "opacity-0");
+    if (errEl) errEl.classList.add("hidden");
+
+    const id = (new URLSearchParams(location.search).get("i") || "").trim();
+
+    const stayOnLoaderWithError = (msg) => {
+      if (loaderLabel) loaderLabel.textContent = msg;
+      if (errEl) errEl.classList.remove("hidden");
+    };
+
+    const revealContent = () => {
+      if (loaderEl) loaderEl.classList.add("hidden");
+      if (!contentEl) return;
+      contentEl.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        contentEl.classList.remove("opacity-0");
+        contentEl.classList.add("opacity-100");
+      });
+    };
+
+    await delay(MIN_LOADER_MS);
+
+    try {
+      if (!id) {
+        stayOnLoaderWithError("Falta el código de invitación");
+        return;
+      }
+
+      // BASE absoluta segura
+      const base =
+        (import.meta && import.meta.env && import.meta.env.BASE_URL) || "/";
+      const absBase =
+        window.location.origin + (base.endsWith("/") ? base : base + "/");
+      const url = new URL("invites.json", absBase).toString();
+
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) {
+        stayOnLoaderWithError("No se pudo cargar la lista de invitados");
+        return;
+      }
+
+      const list = await res.json();
+      const inv = list.find((x) => x.id === id);
+      if (!inv) {
+        stayOnLoaderWithError("El código no es válido");
+        return;
+      }
+
+      const names = Array.isArray(inv.names)
+        ? inv.names
+        : [String(inv.names || "Invitado/a")];
+
+      // Guardamos la invitación actual para usarla en la modal y Supabase
+      currentInvite = {
+        id: inv.id,
+        names,
+        seats: inv.seats ?? 1,
+        email: inv.email || "",
+        group_id: inv.group_id || "",
+      };
+
+      // Pintar UI principal
+      renderGuests(names, currentInvite.seats);
+      document.title = `Invitación — ${names.join(" & ")}`;
+
+      // Pintar UI de la modal
+      renderRsvpFromInvite();
+
+      revealContent();
+    } catch (e) {
+      console.error("[invite] error", e);
+      stayOnLoaderWithError("Ocurrió un error inesperado");
+    }
+  }
+
+  function setupModalAndForm() {
+    const form = document.getElementById("rsvpForm");
+    if (!form) return;
+
+    // Solo manejamos el submit.
+    // Abrir/cerrar + scroll lo maneja el script global de .modal
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!currentInvite) {
+        alert("No se encontró la información de la invitación 😅");
+        return;
+      }
+
+      const groupId = form.dataset.groupId || "";
+      const inviteId = form.dataset.inviteId || "";
+      const waPhone = form.dataset.waPhone || WA_PHONE;
+
+      const notesElement = form.elements.namedItem("notes");
+      const note =
+        notesElement && "value" in notesElement ? notesElement.value : "";
+
+      const personRows = form.querySelectorAll("[data-person-index]");
+      const rows = [];
+      const summaryLines = [];
+
+      personRows.forEach((rowEl) => {
+        const span = rowEl.querySelector("span");
+        const name =
+          (span && span.textContent ? span.textContent : "").trim() ||
+          "Invitado/a";
+        const yes = rowEl.querySelector('input[value="yes"]');
+        const attending = !!(yes && yes.checked);
+
+        rows.push({
+          group_id: groupId,
+          invite_id: inviteId,
+          guest_name: name,
+          attending,
+          notes: note,
+        });
+
+        const status = attending ? "Asiste ✅" : "No asiste ❌";
+        summaryLines.push(`- ${name}: ${status}`);
+      });
+
+      try {
+        const { error } = await supabase.from("rsvps").insert(rows);
+        if (error) {
+          console.error("Error Supabase:", error);
+          alert("Hubo un error guardando la confirmación, intenta de nuevo 🙏");
+          return;
+        }
+
+        const attendingCount = rows.filter((r) => r.attending).length;
+        const total = rows.length;
+
+        const message =
+          `${waIntro}\n` +
+          `Código de invitación: ${inviteId}\n\n` +
+          summaryLines.join("\n") +
+          `\n\nAsistentes confirmados: ${attendingCount} de ${total}` +
+          (note ? `\n\nNota: ${note}` : "");
+
+        const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(
+          message
+        )}`;
+
+        // 🔑 Cerrar la modal usando el mismo sistema global (para que haga unlockScroll)
+        const modal = document.getElementById("modal-rsvp");
+        if (modal) {
+          const closeTrigger = modal.querySelector("[data-close-modal]");
+          if (closeTrigger instanceof HTMLElement) {
+            closeTrigger.click();
+          } else {
+            // Fallback ligero por si acaso
+            modal.removeAttribute("data-open");
+            modal.classList.add("hidden");
+          }
+        }
+
+        // Redirigir a WhatsApp
+        window.location.href = url;
+      } catch (err) {
+        console.error("Error inesperado:", err);
+        alert(
+          "Ocurrió un error inesperado. Intenta nuevamente en unos minutos 🙏"
+        );
+      }
+    });
+  }
+
+  // Inicializar todo
+  document.addEventListener("DOMContentLoaded", () => {
+    setupModalAndForm();
+    loadInvite();
+  });
+</script>
