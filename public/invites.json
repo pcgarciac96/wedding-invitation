@@ -24,7 +24,6 @@
   { "id": "joscif-263", "names": ["José Eduardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-263" },
   { "id": "marcif-447", "names": ["María Isabel Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-447" },
   { "id": "bracas-531", "names": ["Brayan Alexis Castro"], "seats": 1, "email": "", "group_id": "G-531" },
-  { "id": "jonram-678", "names": ["Jonathan Ramos"], "seats": 1, "email": "", "group_id": "G-678" },
   { "id": "jerrod-741", "names": ["Jefferson Rodríguez"], "seats": 1, "email": "", "group_id": "G-741" },
   { "id": "carpul-742", "names": ["Carlos Andrés Pulido"], "seats": 1, "email": "", "group_id": "G-742" },
   { "id": "benram-889", "names": ["Benjamín Ramos Rodríguez"], "seats": 1, "email": "", "group_id": "G-889" },
@@ -36,7 +35,5 @@
   { "id": "dorcam-671", "names": ["Dora Camero Menza"], "seats": 1, "email": "", "group_id": "G-671" },
   { "id": "diepos-788", "names": ["Diego Alejandro Posada"], "seats": 1, "email": "", "group_id": "G-788" },
   { "id": "sebroj-834", "names": ["Sebastián Rojas"], "seats": 1, "email": "", "group_id": "G-834" },
-  { "id": "roscla-596", "names": ["Rosa Virginia Torres", "Claudia Patricia García", "Juan Pablo Polanco"], "seats": 3, "email": "", "group_id": "G-596" },
-  { "id": "laucam-254", "names": ["Laura Cristina Camero Aguirre"], "seats": 1, "email": "", "group_id": "G-254" },
-  { "id": "gerdey-412", "names": ["Gerardo Camero Menza", "Deyanira Aguirre"], "seats": 2, "email": "", "group_id": "G-412" }
+  { "id": "rosvir-596", "names": ["Rosa Virginia Torres"], "seats": 1, "email": "", "group_id": "G-596" }
 ]
