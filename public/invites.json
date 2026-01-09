@@ -20,7 +20,7 @@
   { "id": "blasam-473", "names": ["Blanca Nubia Jaramillo", "Samuel Torres"], "seats": 2, "email": "", "group_id": "G-473" },
   { "id": "danjav-208", "names": ["Daniela Echeverry", "Javier Rendón"], "seats": 2, "email": "", "group_id": "G-208" },
   { "id": "anajos-673", "names": ["Ana Cecilia López", "José Gómez"], "seats": 2, "email": "", "group_id": "G-673" },
-  { "id": "merhum-934", "names": ["Mery Velásquez", "Humberto Muñoz"], "seats": 2, "email": "", "group_id": "G-934" }
+  { "id": "merhum-934", "names": ["Mery Velásquez", "Humberto Muñoz"], "seats": 2, "email": "", "group_id": "G-934" },
 
   
   { "id": "jescif-118", "names": ["Jesús Leonardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-118" },
