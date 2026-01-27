@@ -20,11 +20,13 @@
   { "id": "blasam-473", "names": ["Blanca Nubia Jaramillo", "Samuel Torres"], "seats": 2, "email": "", "group_id": "G-473" },
   { "id": "danjav-208", "names": ["Daniela Echeverry", "Javier Rendón"], "seats": 2, "email": "", "group_id": "G-208" },
   { "id": "anajos-673", "names": ["Ana Cecilia López", "José Gómez"], "seats": 2, "email": "", "group_id": "G-673" },
-  { "id": "merhum-934", "names": ["Mery Velásquez", "Humberto Muñoz"], "seats": 2, "email": "", "group_id": "G-934" },
+  { "id": "ceseva-934", "names": ["Cesar Sanclemente", "Eva Marroquín"], "seats": 2, "email": "", "group_id": "G-934" },
+  { "id": "gabjar-936", "names": ["Gabriela Jaramillo"], "seats": 1, "email": "", "group_id": "G-936" },
+  { "id": "lautat-937", "names": ["Laura Tatamues"], "seats": 1, "email": "", "group_id": "G-937" },
 
   
   { "id": "jescif-118", "names": ["Jesús Leonardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-118" },
-  { "id": "joscif-263", "names": ["José Eduardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-263" },
+  { "id": "joscif-263", "names": ["José Eduardo Cifuentes Camero", "Daniela Lugo Sánchez"], "seats": 1, "email": "", "group_id": "G-263" },
   { "id": "marcif-447", "names": ["María Isabel Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-447" },
   { "id": "bracas-531", "names": ["Brayan Alexis Castro"], "seats": 1, "email": "", "group_id": "G-531" },
   { "id": "jerrod-741", "names": ["Jefferson Rodríguez"], "seats": 1, "email": "", "group_id": "G-741" },
