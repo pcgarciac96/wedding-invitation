@@ -8,17 +8,17 @@ interface Props {
   venueAddress?: string; // "Vía Pereira a Cerritos..."
   rsvpHref?: string; // solo lo usamos como flag para mostrar el botón
   mapsHref?: string; // Link a Google Maps
-  guests?: string[];     // nombres de los invitados en esta invitación (opcional)
-  inviteCode?: string;   // código único de invitación (opcional)
+  guests?: string[]; // nombres de los invitados en esta invitación (opcional)
+  inviteCode?: string; // código único de invitación (opcional)
   class?: string;
 }
 
 /** Datos dinámicos por invitación (puedes generarlos desde tu backend o build) */
 const rsvp = {
-  groupId:  '',
-  inviteId: '',
-  names:    [''], // 1 o más
-  waPhone:  '573245141722', // número destino WhatsApp (sin +)
+  groupId: "",
+  inviteId: "",
+  names: [""], // 1 o más
+  waPhone: "573245141722", // número destino WhatsApp (sin +)
 };
 
 const waIntro = `Hola, ya diligencié el formulario de asistencia.`;
@@ -46,9 +46,11 @@ const {
     class="rounded-[28px] md:rounded-[32px] md:border md:border-[color:var(--accent)]/60 bg-[#FDF4D4] p-6 md:p-10 text-center text-[color:var(--sepia)] md:shadow-md"
   >
     <!-- Ícono de anillos -->
-    <div class="flex justify-center mb-4 md:mb-6 w-full text-[color:var(--sepia)]">
+    <div
+      class="flex justify-center mb-4 md:mb-6 w-full text-[color:var(--sepia)]"
+    >
       <!-- SVG de anillos si quieres -->
-       <svg
+      <svg
         class=""
         width="126"
         height="126"
@@ -79,7 +81,7 @@ const {
     </div>
 
     <!-- Título -->
-    <div class="flex justify-center ">
+    <div class="flex justify-center">
       <div class="flex justify-center border-y border-[#B88358] w-48">
         <h2
           id="guests-title"
@@ -99,11 +101,17 @@ const {
     <div class="mt-6 grid gap-8 md:grid-cols-2 md:gap-10">
       <!-- Columna: Día -->
       <div>
-        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">Día</h4>
-        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine1}</p>
+        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">
+          Día
+        </h4>
+        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">
+          {dateLine1}
+        </p>
         {
           dateLine2 && (
-            <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{dateLine2}</p>
+            <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">
+              {dateLine2}
+            </p>
           )
         }
 
@@ -120,19 +128,27 @@ const {
           )
         }
         <div class="mt-2 text-[#B89477]">
-          <p class="underline">Es importante confirmar asistencia antes del 16 de enero de 2026.</p>
+          <p id="rsvp-deadline-text" class="underline">
+            Es importante confirmar asistencia antes del 16 de enero de 2026.
+          </p>
         </div>
       </div>
 
       <!-- Columna: Lugar -->
       <div>
-        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">{venueTitle}</h4>
-        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">{venueName}</p>
-        {venueAddress && (
-          <p class="font-italianno text-2xl md:text-lg opacity-90 text-[#B88358]">
-            {venueAddress}
-          </p>
-        )}
+        <h4 class="font-italianno text-5xl md:text-4xl mb-3 text-[#B88358]">
+          {venueTitle}
+        </h4>
+        <p class="font-italianno text-3xl md:text-lg opacity-90 text-[#B88358]">
+          {venueName}
+        </p>
+        {
+          venueAddress && (
+            <p class="font-italianno text-2xl md:text-lg opacity-90 text-[#B88358]">
+              {venueAddress}
+            </p>
+          )
+        }
 
         {
           mapsHref && (
@@ -165,7 +181,8 @@ const {
   <div
     class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"
     data-close-modal
-  ></div>
+  >
+  </div>
 
   <!-- Panel (mismo patrón que dress/rules/gifts) -->
   <div
@@ -185,22 +202,21 @@ const {
 
     <div class="mt-2">
       <ul class="list-disc pl-6 space-y-1">
-        <li>Diligencia el formulario de asistencia indicando, para cada persona incluida en la invitación, si asistirá o no.</li>
         <li>
-          Al presionar el botón de enviar, se abrirá WhatsApp con un mensaje ya escrito con tu información. 
-          Solo debes tocar “Enviar” para confirmar tu asistencia.
+          Diligencia el formulario de asistencia indicando, para cada persona
+          incluida en la invitación, si asistirá o no.
+        </li>
+        <li>
+          Al presionar el botón de enviar, se abrirá WhatsApp con un mensaje ya
+          escrito con tu información. Solo debes tocar “Enviar” para confirmar
+          tu asistencia.
         </li>
       </ul>
     </div>
 
-    <form
-      id="rsvpForm"
-      class="mt-4 space-y-4"
-      data-wa-phone="573245141722"
-    >
+    <form id="rsvpForm" class="mt-4 space-y-4" data-wa-phone="573245141722">
       <!-- Lista de personas: se rellena desde invites.json -->
       <div id="rsvp-persons" class="space-y-3"></div>
-
 
       <div class="pt-2 flex justify-end gap-2">
         <button
@@ -221,7 +237,6 @@ const {
   </div>
 </div>
 
-
 <!-- Script: Supabase + modal + WhatsApp -->
 <script type="module">
   import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -240,7 +255,7 @@ const {
   const waIntro = "Hola, ya diligencié el formulario de asistencia.";
 
   // Estado actual de la invitación cargada
-  // { id, names (array), seats, email, group_id }
+  // { id, names (array), seats, email, group_id, rsvp_deadline }
   let currentInvite = null;
 
   // Helpers
@@ -382,11 +397,18 @@ const {
         seats: inv.seats ?? 1,
         email: inv.email || "",
         group_id: inv.group_id || "",
+        rsvp_deadline: inv.rsvp_deadline || "16 de enero de 2026",
       };
 
       // Pintar UI principal
       renderGuests(names, currentInvite.seats);
       document.title = `Invitación — ${names.join(" & ")}`;
+
+      // Actualizar el texto de la fecha límite
+      const deadlineEl = document.getElementById("rsvp-deadline-text");
+      if (deadlineEl && currentInvite.rsvp_deadline) {
+        deadlineEl.textContent = `Es importante confirmar asistencia antes del ${currentInvite.rsvp_deadline}.`;
+      }
 
       // Pintar UI de la modal
       renderRsvpFromInvite();
@@ -463,7 +485,7 @@ const {
           (note ? `\n\nNota: ${note}` : "");
 
         const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(
-          message
+          message,
         )}`;
 
         // 🔑 Cerrar la modal usando el mismo sistema global (para que haga unlockScroll)
@@ -484,7 +506,7 @@ const {
       } catch (err) {
         console.error("Error inesperado:", err);
         alert(
-          "Ocurrió un error inesperado. Intenta nuevamente en unos minutos 🙏"
+          "Ocurrió un error inesperado. Intenta nuevamente en unos minutos 🙏",
         );
       }
     });
