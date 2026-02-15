@@ -23,7 +23,7 @@
   { "id": "ceseva-934", "names": ["Cesar Sanclemente", "Eva Marroquín"], "seats": 2, "email": "", "group_id": "G-934", "rsvp_deadline": "7 de febrero de 2026" },
   { "id": "gabjar-936", "names": ["Gabriela Jaramillo"], "seats": 1, "email": "", "group_id": "G-936", "rsvp_deadline": "7 de febrero de 2026" },
   { "id": "lautat-937", "names": ["Laura Tatamues"], "seats": 1, "email": "", "group_id": "G-937", "rsvp_deadline": "7 de febrero de 2026" },
-
+  { "id": "jualui-788", "names": ["Juan Carlos Sierra", "Luisa Fernanda Salazar"], "seats": 2, "email": "", "group_id": "G-788", "rsvp_deadline": "16 de enero de 2026" },
   
   { "id": "jescif-118", "names": ["Jesús Leonardo Cifuentes Camero"], "seats": 1, "email": "", "group_id": "G-118", "rsvp_deadline": "16 de enero de 2026" },
   { "id": "joscif-263", "names": ["José Eduardo Cifuentes Camero", "Daniela Lugo Sánchez"], "seats": 1, "email": "", "group_id": "G-263", "rsvp_deadline": "16 de enero de 2026" },
